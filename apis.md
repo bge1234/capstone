@@ -5,5 +5,5 @@
 - Parks, museums, schools, universities - https://developers.google.com/places/web-service/search#PlaceSearchRequests
 - Population - http://www.census.gov/data/developers/data-sets/decennial-census-data.html
 - Sports - team names hardcoded in ./data/sports
-- Average salaries by occupation -
-- Cost of living - 
+- Average salaries by occupation - http://opendata.stackexchange.com/questions/4790/average-job-salary-by-title-location-etc-us-or-intl
+- Cost of living - http://www.bls.gov/help/hlpforma.htm#su
