@@ -1,0 +1,6 @@
+- M: Find APIs, then pull data and get familiar with/save it. Start with a certain number of the most populated US cities.
+- T: Design and create user input page.
+- W: Implement logic to match cities based on user input.
+- R: Design and create display of matched cities list.
+- F: Implement Tinder-esque yea/nay of matched cities.
+- Week 2: Stretch: Implement learning of user preferences based on input.
