@@ -2,9 +2,8 @@
 - Elevation - http://ned.usgs.gov/epqs/pqs.php?x=-104.990251&y=39.739236&units=Feet&output=json
 - Political (elected officials) - https://developers.google.com/civic-information
 - Trails - https://market.mashape.com/trailapi/trailapi
-- Parks - https://developers.google.com/places/web-service/search#PlaceSearchRequests
-- Population -
-- Arts and culture -
-- Education -
-- Sports -
-- Occupation average salary vs. cost of living - 
+- Parks, museums, schools, universities - https://developers.google.com/places/web-service/search#PlaceSearchRequests
+- Population - http://www.census.gov/data/developers/data-sets/decennial-census-data.html
+- Sports - team names hardcoded in ./data/sports
+- Average salaries by occupation -
+- Cost of living - 
