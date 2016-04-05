@@ -1,8 +1,7 @@
 var getter = $.ajax({
-  url: "https://trailapi-trailapi.p.mashape.com/?q[city_cont]=Denver&q[country_cont]=United+States&q[state_cont]=Colorado&radius=5",
+  url: "http://api.wolframalpha.com/v2/query?input=population+of+denver&appid=JUR3QT-HYKRWQW38W",
   method: "GET",
-  dataType: "json",
-  headers:{ "X-Mashape-Key": "vCAJivs8Hbmshar7q8mbiQyvzgxtp196VFJjsnU83v4lteo5fQ" }
+  dataType: "json"
 });
 
 getter.done(function(response) {
