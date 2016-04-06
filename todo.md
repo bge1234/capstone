@@ -1,6 +1,6 @@
-- W: Implement logic to match cities based on user input.
-- R: Design and create display of matched cities list.
+- W: Change all references to tasks to be preferences. Make it my own.
+- R: Write matching algorithm (output results as list).
 - F: Implement Tinder-esque yea/nay of matched cities.
 - Weekend: Catch up if behind.
-- Week 2: Clean up CSS/look and feel, do stretch goal.
-- Stretch goal: Implement learning of user preferences based on input.
+- M: Clean up CSS/look and feel, do stretch goal.
+- T: Implement learning of user preferences based on input (stretch goal).
