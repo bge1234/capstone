@@ -37,9 +37,33 @@
           </button>
         </ion-header-bar>
         <ion-content scroll="false">
-          <ion-list>
-            <ion-item ng-repeat="task in activeProject.tasks">
-              {{task.title}}
+          <ion-list ng-repeat="task in activeProject.tasks">
+            <ion-item>
+              {{task.temperature}}
+            </ion-item>
+            <ion-item>
+              {{task.elevation}}
+            </ion-item>
+            <ion-item>
+              {{task.trails}}
+            </ion-item>
+            <ion-item>
+              {{task.parks}}
+            </ion-item>
+            <ion-item>
+              {{task.museums}}
+            </ion-item>
+            <ion-item>
+              {{task.universities}}
+            </ion-item>
+            <ion-item>
+              {{task.population}}
+            </ion-item>
+            <ion-item>
+              {{task.sports}}
+            </ion-item>
+            <ion-item>
+              {{task.occupation}}
             </ion-item>
           </ion-list>
         </ion-content>
@@ -79,7 +103,31 @@
           <form ng-submit="createTask(task)">
             <div class="list">
               <label class="item item-input">
-                <input type="text" placeholder="What do you need to do?" ng-model="task.title">
+                <input type="text" placeholder="Temperature?" ng-model="task.temperature"><br>
+              </label>
+              <label class="item item-input">
+                <input type="text" placeholder="Elevation?" ng-model="task.elevation"><br>
+              </label>
+              <label class="item item-input">
+                <input type="text" placeholder="Trails?" ng-model="task.trails"><br>
+              </label>
+              <label class="item item-input">
+                <input type="text" placeholder="Parks?" ng-model="task.parks"><br>
+              </label>
+              <label class="item item-input">
+                <input type="text" placeholder="Museums?" ng-model="task.museums"><br>
+              </label>
+              <label class="item item-input">
+                <input type="text" placeholder="Universities?" ng-model="task.universities"><br>
+              </label>
+              <label class="item item-input">
+                <input type="text" placeholder="Population?" ng-model="task.population"><br>
+              </label>
+              <label class="item item-input">
+                <input type="text" placeholder="Pro sports?" ng-model="task.sports"><br>
+              </label>
+              <label class="item item-input">
+                <input type="text" placeholder="Occupation?" ng-model="task.occupation"><br>
               </label>
             </div>
             <div class="padding">

@@ -1,4 +1,4 @@
-- Tempearature - http://api.wunderground.com/api/09199f63766e0a37/almanac/q/ + STATEABBREVIATION + / + CITY + .json
+- Temperature - http://api.wunderground.com/api/09199f63766e0a37/almanac/q/ + STATEABBREVIATION + / + CITY + .json
 - Elevation - http://ned.usgs.gov/epqs/pqs.php?x= + LONGITUDE + &y= + LATITUDE + &units=Feet&output=json
 - Trails - https://trailapi-trailapi.p.mashape.com/?q[city_cont]= + CITY + &q[country_cont]=United+States&q[state_cont]= + STATE + &radius=5
 - Parks, museums, universities - https://maps.googleapis.com/maps/api/place/textsearch/json?query= + TYPE + +in+ + CITY + &key=AIzaSyBI9s3tzAqmyq24EaLFF0E9h-Up7Eo1A3w

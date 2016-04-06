@@ -77,7 +77,15 @@ angular.module('starter', ['ionic'])
       return;
     }
     $scope.activeProject.tasks.push({
-      title: task.title
+      temperature: task.temperature,
+      elevation: task.elevation,
+      trails: task.trails,
+      parks: task.parks,
+      museums: task.museums,
+      universities: task.universities,
+      population: task.population,
+      sports: task.sports,
+      occupation: task.occupation,
     });
     $scope.taskModal.hide();
 
