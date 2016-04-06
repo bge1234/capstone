@@ -2,5 +2,5 @@
 - R: Write matching algorithm (output results as list).
 - F: Implement Tinder-esque yea/nay of matched cities.
 - Weekend: Catch up if behind.
-- M: Clean up CSS/look and feel, do stretch goal.
+- M: Clean up CSS/look and feel (more like a phone).
 - T: Implement learning of user preferences based on input (stretch goal).
