@@ -1,6 +1,4 @@
-- W: Remove "projects" portions and save prefs directly.
-- R: Write matching algorithm (output results as list).
-- F: Implement Tinder-esque yea/nay of matched cities.
+- F: Remove "projects" portions and save prefs directly. Write matching algorithm (output results as list), then make it Tinder style with cards.
 - Weekend: Catch up if behind.
 - M: Clean up CSS/look and feel (more like a phone). Use ng-cloak.
 - T: Implement learning of user preferences based on input (stretch goal).
