@@ -1,6 +1,6 @@
-- W: Change all references to tasks to be preferences. Make it my own.
+- W: Remove "projects" portions and save prefs directly.
 - R: Write matching algorithm (output results as list).
 - F: Implement Tinder-esque yea/nay of matched cities.
 - Weekend: Catch up if behind.
-- M: Clean up CSS/look and feel (more like a phone).
+- M: Clean up CSS/look and feel (more like a phone). Use ng-cloak.
 - T: Implement learning of user preferences based on input (stretch goal).

@@ -20,11 +20,11 @@ angular.module('starter', ['ionic'])
       // Add a new project
       return {
         title: projectTitle,
-        tasks: []
+        set_of_prefs: []
       };
     },
     getLastActiveIndex: function() {
-      return parseInt(window.localStorage['lastActiveProject']) || 0;
+      return 0;
     },
     setLastActiveIndex: function(index) {
       window.localStorage['lastActiveProject'] = index;
@@ -66,41 +66,44 @@ angular.module('starter', ['ionic'])
   };
 
   // Create our modal
-  $ionicModal.fromTemplateUrl('new-task.html', function(modal) {
-    $scope.taskModal = modal;
+  $ionicModal.fromTemplateUrl('new-prefs.html', function(modal) {
+    $scope.prefsModal = modal;
   }, {
     scope: $scope
   });
 
-  $scope.createTask = function(task) {
-    if(!$scope.activeProject || !task) {
+  $scope.createPrefs = function(prefs) {
+    if(!$scope.activeProject || !prefs) {
       return;
     }
-    $scope.activeProject.tasks.push({
-      temperature: task.temperature,
-      elevation: task.elevation,
-      trails: task.trails,
-      parks: task.parks,
-      museums: task.museums,
-      universities: task.universities,
-      population: task.population,
-      sports: task.sports,
-      occupation: task.occupation,
+    $scope.activeProject.set_of_prefs.push({
+      heatcold: prefs.heatcold,
+      snow: prefs.snow,
+      seasons: prefs.seasons,
+      outdoors: prefs.outdoors,
+      active: prefs.active,
+      activities: prefs.activities,
+      culture: prefs.culture,
+      children: prefs.children,
+      dog: prefs.dog,
+      entrepreneur: prefs.entrepreneur,
+      population: prefs.population,
+      sports: prefs.sports,
+      occupation: prefs.occupation
     });
-    $scope.taskModal.hide();
+    $scope.prefsModal.hide();
 
     // Inefficient, but save all the projects
     Projects.save($scope.projects);
 
-    task.title = "";
   };
 
-  $scope.newTask = function() {
-    $scope.taskModal.show();
+  $scope.newPrefs = function() {
+    $scope.prefsModal.show();
   };
 
-  $scope.closeNewTask = function() {
-    $scope.taskModal.hide();
+  $scope.closeNewPrefs = function() {
+    $scope.prefsModal.hide();
   }
 
   $scope.toggleProjects = function() {
