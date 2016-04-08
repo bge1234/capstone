@@ -1,4 +1,2 @@
-- F/weekend: Write matching algorithm (output results as list). Triggered/retriggered by a button.
-
-- M: Clean up CSS/look and feel (more like a phone). Use ng-cloak. Separation of concerns for Angular items.
-- T: Make it Tinder style with cards. Swipe right, it goes into a container to be reviewed later. Swipe left, and it's gone.
+- F-M: Write matching algorithm (output results as list). Triggered/retriggered by a button. Use separate function to pull data from each API/set of APIs, parse it, and then match it with relevant prefs.
+- T: Make it Tinder style with cards. On swipe right, it goes into a container to be reviewed later. Swipe left, and it's gone.
