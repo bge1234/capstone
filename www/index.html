@@ -37,7 +37,7 @@
           </button>
         </ion-header-bar>
         <ion-content scroll="false">
-          <ion-list ng-repeat="prefs in activeProject.set_of_prefs">
+          <ion-list ng-repeat="prefs in set_of_prefs">
             <ion-item>
               {{prefs.heatcold}}
             </ion-item>
@@ -81,7 +81,7 @@
       <!-- Left menu -->
       <ion-side-menu side="left">
         <ion-header-bar class="bar-dark">
-          <h1 class="title">Projects</h1>
+          <h1 class="title">Prefs</h1>
           <button class="button button-icon ion-plus" ng-click="newProject()">
           </button>
         </ion-header-bar>
@@ -121,9 +121,9 @@
               </label>
               <label class="item">Do you like snow?<br><br>
                 <select ng-model="prefs.snow">
-                  <option value="yes">Yes.
+                  <option value="true">Yes.
                   <option value="some">I'm ok with a little bit.'
-                  <option value="no">No.
+                  <option value="false">No.
                 </select>
               </label>
               <label class="item">What is your opinion on having four seasons?<br><br>
@@ -147,8 +147,8 @@
               </label>
               <label class="item">Do you consider yourself to be physically active?<br><br>
                 <select ng-model="prefs.active">
-                  <option value="yes">Yes.
-                  <option value="no">No.
+                  <option value="true">Yes.
+                  <option value="false">No.
                 </select>
               </label>
               <p class="item">Check any of the following that you enjoy:</p>
@@ -161,20 +161,20 @@
                 <label><input type="checkbox" ng-model="prefs.culture.music">Music</label><br>
               <label class="item">Do you have children?<br><br>
                 <select ng-model="prefs.children">
-                  <option value="yes">Yes.
-                  <option value="no">No.
+                  <option value="true">Yes.
+                  <option value="false">No.
                 </select>
               </label>
               <label class="item">Do you have a dog?<br><br>
                 <select ng-model="prefs.dog">
-                  <option value="yes">Yes.
-                  <option value="no">No.
+                  <option value="true">Yes.
+                  <option value="false">No.
                 </select>
               </label>
               <label class="item">Do you plan to start your own business?<br><br>
                 <select ng-model="prefs.entrepreneur">
-                  <option value="yes">Yes.
-                  <option value="no">No.
+                  <option value="true">Yes.
+                  <option value="false">No.
                 </select>
               </label>
               <label class="item">Which of the following describes you?<br><br>
