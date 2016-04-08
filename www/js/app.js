@@ -20,8 +20,13 @@ angular.module('starter', ['ionic'])
 })
 
 .controller('TodoCtrl', function($scope, $timeout, $ionicModal, Prefs, $ionicSideMenuDelegate) {
+  $ionicModal.fromTemplateUrl('view-prefs.html', function(modal) {
+    $scope.viewPrefsModal = modal;
+  }, {
+    scope: $scope
+  });
   $ionicModal.fromTemplateUrl('new-prefs.html', function(modal) {
-    $scope.prefsModal = modal;
+    $scope.newPrefsModal = modal;
   }, {
     scope: $scope
   });
@@ -29,7 +34,10 @@ angular.module('starter', ['ionic'])
   $scope.set_of_prefs = Prefs.all();
 
   $scope.createPrefs = function(prefs) {
-    $scope.set_of_prefs.push({
+    //Clear existing prefs and then we'll overwrite them on the next line.
+    $scope.set_of_prefs = {};
+
+    $scope.set_of_prefs = {
       heatcold: prefs.heatcold,
       snow: prefs.snow,
       seasons: prefs.seasons,
@@ -43,15 +51,28 @@ angular.module('starter', ['ionic'])
       population: prefs.population,
       sports: prefs.sports,
       occupation: prefs.occupation
-    });
-    $scope.prefsModal.hide();
-  };
+    };
+    Prefs.save($scope.set_of_prefs);
+    $scope.newPrefsModal.hide();
+  }
+
+  $scope.toggleMatches = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  }
+
+  $scope.viewPrefs = function() {
+    $scope.viewPrefsModal.show();
+  }
+
+  $scope.closeViewPrefs = function() {
+    $scope.viewPrefsModal.hide();
+  }
 
   $scope.newPrefs = function() {
-    $scope.prefsModal.show();
-  };
+    $scope.newPrefsModal.show();
+  }
 
   $scope.closeNewPrefs = function() {
-    $scope.prefsModal.hide();
+    $scope.newPrefsModal.hide();
   }
 });
