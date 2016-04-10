@@ -1,4 +1,3 @@
-- Population - populations.csv file in ./data
 - Sports - team names hardcoded in ./data/sports
 
 - Average salaries by occupation - http://api.bls.gov/publicAPI/v2/timeseries/data/OEUM + AREA + 000000 + OCCUPATION + 04, areas: http://download.bls.gov/pub/time.series/oe/oe.area, occupations: http://download.bls.gov/pub/time.series/oe/oe.occupation
