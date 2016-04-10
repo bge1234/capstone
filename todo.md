@@ -9,3 +9,5 @@ Sunday:
 Monday: In main controller, iterate through saved data to match against user prefs. Use separate function for each API/set of APIs, and use master function to call them all.
 
 Tuesday: Make it Tinder style with cards. On swipe right, it goes into a container to be reviewed later. Swipe left, and it's gone.
+
+Tuesday/Wednesday: Final testing, cleanup, tweaking, and look/feel.
