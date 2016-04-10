@@ -1,10 +1,3 @@
-// Todo:
-// Sunday and Monday:
-//   - Save incoming data somewhere in service.
-//   - Test in iOS emulator to make sure CORS isn't an issue. Fix it if it is.
-//   - Back in main controller, parse saved data to match against user prefs. Use separate function for each API/set of APIs, and use master function to call them all.
-// Tuesday: Make it Tinder style with cards. On swipe right, it goes into a container to be reviewed later. Swipe left, and it's gone.
-
 app.factory('apiService', function() {
   return {
     cities: [{
@@ -107,6 +100,30 @@ app.factory('apiService', function() {
 
         //Populations
         // console.log(this.cities[i]["population"]);
+
+        //Sports
+        console.log(this.cities[i]["city"].split('+').join(' ') + ':');
+        for (var j = 0; j < mlb.length; j++) {
+          if(mlb[j]["city"] === this.cities[i]["city"].split('+').join(' '))
+            console.log("  " + mlb[j]["team"] + " (MLB)");
+        }
+        for (var j = 0; j < mls.length; j++) {
+          if(mls[j]["city"] === this.cities[i]["city"].split('+').join(' '))
+            console.log("  " + mls[j]["team"] + " (MLS)");
+        }
+        for (var j = 0; j < nba.length; j++) {
+          if(nba[j]["city"] === this.cities[i]["city"].split('+').join(' '))
+            console.log("  " + nba[j]["team"] + " (NBA)");
+
+        }
+        for (var j = 0; j < nfl.length; j++) {
+          if(nfl[j]["city"] === this.cities[i]["city"].split('+').join(' '))
+            console.log("  " + nfl[j]["team"] + " (NFL)");
+        }
+        for (var j = 0; j < nhl.length; j++) {
+          if(nhl[j]["city"] === this.cities[i]["city"].split('+').join(' '))
+            console.log("  " + nhl[j]["team"] + " (NHL)");
+        }
       }
     },
     apiCall: function(url, headers) {

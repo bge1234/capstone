@@ -1,4 +1,4 @@
-{
+var mlba = {
 	"subject": "master_scoreboard_mlb_2016_04_04",
 	"copyright": "Copyright 2016 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt",
 	"data": {
@@ -10,7 +10,7 @@
 			"game": [{
 				"game_type": "R",
 				"double_header_sw": "N",
-				"location": "Bronx, NY",
+				"location": "New York City, NY",
 				"away_time": "12:05",
 				"time": "1:05",
 				"home_time": "1:05",
@@ -2117,4 +2117,4 @@
 			"day": "04"
 		}
 	}
-}
+};
