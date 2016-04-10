@@ -102,28 +102,28 @@ app.factory('apiService', function() {
         // console.log(this.cities[i]["population"]);
 
         //Sports
-        console.log(this.cities[i]["city"].split('+').join(' ') + ':');
-        for (var j = 0; j < mlb.length; j++) {
-          if(mlb[j]["city"] === this.cities[i]["city"].split('+').join(' '))
-            console.log("  " + mlb[j]["team"] + " (MLB)");
-        }
-        for (var j = 0; j < mls.length; j++) {
-          if(mls[j]["city"] === this.cities[i]["city"].split('+').join(' '))
-            console.log("  " + mls[j]["team"] + " (MLS)");
-        }
-        for (var j = 0; j < nba.length; j++) {
-          if(nba[j]["city"] === this.cities[i]["city"].split('+').join(' '))
-            console.log("  " + nba[j]["team"] + " (NBA)");
-
-        }
-        for (var j = 0; j < nfl.length; j++) {
-          if(nfl[j]["city"] === this.cities[i]["city"].split('+').join(' '))
-            console.log("  " + nfl[j]["team"] + " (NFL)");
-        }
-        for (var j = 0; j < nhl.length; j++) {
-          if(nhl[j]["city"] === this.cities[i]["city"].split('+').join(' '))
-            console.log("  " + nhl[j]["team"] + " (NHL)");
-        }
+        // console.log(this.cities[i]["city"].split('+').join(' ') + ':');
+        // for (var j = 0; j < mlb.length; j++) {
+        //   if(mlb[j]["city"] === this.cities[i]["city"].split('+').join(' '))
+        //     console.log("  " + mlb[j]["team"] + " (MLB)");
+        // }
+        // for (var j = 0; j < mls.length; j++) {
+        //   if(mls[j]["city"] === this.cities[i]["city"].split('+').join(' '))
+        //     console.log("  " + mls[j]["team"] + " (MLS)");
+        // }
+        // for (var j = 0; j < nba.length; j++) {
+        //   if(nba[j]["city"] === this.cities[i]["city"].split('+').join(' '))
+        //     console.log("  " + nba[j]["team"] + " (NBA)");
+        //
+        // }
+        // for (var j = 0; j < nfl.length; j++) {
+        //   if(nfl[j]["city"] === this.cities[i]["city"].split('+').join(' '))
+        //     console.log("  " + nfl[j]["team"] + " (NFL)");
+        // }
+        // for (var j = 0; j < nhl.length; j++) {
+        //   if(nhl[j]["city"] === this.cities[i]["city"].split('+').join(' '))
+        //     console.log("  " + nhl[j]["team"] + " (NHL)");
+        // }
       }
     },
     apiCall: function(url, headers) {
