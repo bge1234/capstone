@@ -8,156 +8,72 @@
 app.factory('apiService', function() {
   return {
     cities: [{
-      city: "New York City",
-      state: "New York",
+      city: "New+York+City",
+      state: "New+York",
       state_abbreviation: "NY",
       latitude: "40.712784",
       longitude: "-74.005941"
     },{
-      city: "Denver",
-      state: "Colorado",
-      state_abbreviation: "CO",
-      latitude: "39.739236",
-      longitude: "-104.990251"
+      city: "Los+Agneles",
+      state: "California",
+      state_abbreviation: "CA",
+      latitude: "34.052234",
+      longitude: "-118.243685"
+    },{
+      city: "Chicago",
+      state: "Illinois",
+      state_abbreviation: "IL",
+      latitude: "41.878114",
+      longitude: "-87.629798"
+    },{
+      city: "Houston",
+      state: "Texas",
+      state_abbreviation: "TX",
+      latitude: "29.760427",
+      longitude: "-95.369803"
+    },{
+      city: "Philadelphia",
+      state: "Pennsylvania",
+      state_abbreviation: "PA",
+      latitude: "39.952584",
+      longitude: "-75.165222"
+    },{
+      city: "Phoenix",
+      state: "Arizona",
+      state_abbreviation: "AZ",
+      latitude: "33.448377",
+      longitude: "-112.074037"
+    },{
+      city: "San+Antonio",
+      state: "Texas",
+      state_abbreviation: "TX",
+      latitude: "29.424122",
+      longitude: "-98.493628"
+    },{
+      city: "San+Diego",
+      state: "California",
+      state_abbreviation: "CA",
+      latitude: "32.715738",
+      longitude: "-117.161084"
+    },{
+      city: "Dallas",
+      state: "Texas",
+      state_abbreviation: "TX",
+      latitude: "32.776664",
+      longitude: "-96.796988"
+    },{
+      city: "San+Jose",
+      state: "California",
+      state_abbreviation: "CA",
+      latitude: "37.338208",
+      longitude: "-121.886329"
     },{
       city: "Denver",
       state: "Colorado",
       state_abbreviation: "CO",
       latitude: "39.739236",
       longitude: "-104.990251"
-    },{
-      city: "Denver",
-      state: "Colorado",
-      state_abbreviation: "CO",
-      latitude: "39.739236",
-      longitude: "-104.990251"
-    },{
-      city: "Denver",
-      state: "Colorado",
-      state_abbreviation: "CO",
-      latitude: "39.739236",
-      longitude: "-104.990251"
-    },{
-      city: "Denver",
-      state: "Colorado",
-      state_abbreviation: "CO",
-      latitude: "39.739236",
-      longitude: "-104.990251"
-    },{
-      city: "Denver",
-      state: "Colorado",
-      state_abbreviation: "CO",
-      latitude: "39.739236",
-      longitude: "-104.990251"
-    },{
-      city: "Denver",
-      state: "Colorado",
-      state_abbreviation: "CO",
-      latitude: "39.739236",
-      longitude: "-104.990251"
-    },{
-      city: "Denver",
-      state: "Colorado",
-      state_abbreviation: "CO",
-      latitude: "39.739236",
-      longitude: "-104.990251"
-    },{
-      city: "Denver",
-      state: "Colorado",
-      state_abbreviation: "CO",
-      latitude: "39.739236",
-      longitude: "-104.990251"
-    },{
-      city: "Denver",
-      state: "Colorado",
-      state_abbreviation: "CO",
-      latitude: "39.739236",
-      longitude: "-104.990251"
-    },{
-      city: "Denver",
-      state: "Colorado",
-      state_abbreviation: "CO",
-      latitude: "39.739236",
-      longitude: "-104.990251"
-    },{
-      city: "Denver",
-      state: "Colorado",
-      state_abbreviation: "CO",
-      latitude: "39.739236",
-      longitude: "-104.990251"
-    },{
-      city: "Denver",
-      state: "Colorado",
-      state_abbreviation: "CO",
-      latitude: "39.739236",
-      longitude: "-104.990251"
-    },{
-      city: "Denver",
-      state: "Colorado",
-      state_abbreviation: "CO",
-      latitude: "39.739236",
-      longitude: "-104.990251"
-    },{
-      city: "Denver",
-      state: "Colorado",
-      state_abbreviation: "CO",
-      latitude: "39.739236",
-      longitude: "-104.990251"
-    },{
-      city: "Denver",
-      state: "Colorado",
-      state_abbreviation: "CO",
-      latitude: "39.739236",
-      longitude: "-104.990251"
-    },{
-      city: "Denver",
-      state: "Colorado",
-      state_abbreviation: "CO",
-      latitude: "39.739236",
-      longitude: "-104.990251"
-    },{
-      city: "Denver",
-      state: "Colorado",
-      state_abbreviation: "CO",
-      latitude: "39.739236",
-      longitude: "-104.990251"
-    },{
-      city: "Denver",
-      state: "Colorado",
-      state_abbreviation: "CO",
-      latitude: "39.739236",
-      longitude: "-104.990251"
-    },{
-      city: "Denver",
-      state: "Colorado",
-      state_abbreviation: "CO",
-      latitude: "39.739236",
-      longitude: "-104.990251"
-    },{
-      city: "Denver",
-      state: "Colorado",
-      state_abbreviation: "CO",
-      latitude: "39.739236",
-      longitude: "-104.990251"
-    },{
-      city: "Denver",
-      state: "Colorado",
-      state_abbreviation: "CO",
-      latitude: "39.739236",
-      longitude: "-104.990251"
-    },{
-      city: "Denver",
-      state: "Colorado",
-      state_abbreviation: "CO",
-      latitude: "39.739236",
-      longitude: "-104.990251"
-    },{
-      city: "Denver",
-      state: "Colorado",
-      state_abbreviation: "CO",
-      latitude: "39.739236",
-      longitude: "-104.990251"
-    },{],
+    }],
     init: function() {
       for (var i = 0; i < this.cities.length; i++) {
         // Temperature
