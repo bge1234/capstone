@@ -10,3 +10,30 @@
 - Cost of living (better one) - http://www.numbeo.com/api/doc.jsp key: y8cjt0c06w8o3g
 
 Denver: lat=39.739236, lng=-104.990251
+
+Cities:
+New York
+LA
+Chicago
+Houston
+Phily
+Phoenix
+San Antonio
+SD
+Dallas
+San Jose
+Austin
+Jax
+SF
+Indy
+Cbus
+Fort Worth
+Charlotte
+Detroit
+El Paso
+Seattle
+Denver
+DC
+Memphis
+Boston
+Nashville

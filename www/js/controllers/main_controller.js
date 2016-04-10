@@ -1,4 +1,5 @@
-app.controller("MainController", function($scope, $timeout, $ionicModal, prefsService, $ionicSideMenuDelegate) {
+app.controller("MainController", function($scope, $timeout, $ionicModal, prefsService, apiService, $ionicSideMenuDelegate) {
+
   $ionicModal.fromTemplateUrl('view-prefs.html', function(modal) {
     $scope.viewPrefsModal = modal;
   }, {
@@ -53,5 +54,9 @@ app.controller("MainController", function($scope, $timeout, $ionicModal, prefsSe
 
   $scope.closeNewPrefs = function() {
     $scope.newPrefsModal.hide();
+  }
+
+  $scope.initApiData = function() {
+    apiService.init();
   }
 });
