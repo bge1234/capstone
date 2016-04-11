@@ -5,7 +5,7 @@ app.factory('apiService', function() {
     init: function() {
       for (var i = 0; i < this.cities.length; i++) {
         var getter = $.ajax({
-          url: "http://localhost:3000/makecalls/" + cities[i],
+          url: "https://moveitapi-benebel.herokuapp.com/" + cities[i],
           method: "GET",
           dataType: "json"
         });
