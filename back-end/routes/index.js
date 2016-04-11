@@ -4,7 +4,7 @@ var request = require('request');
 var knex = require('../db/knex');
 
 router.get('/', function(req, res, next) {
-  res.send('You\'ve reached the API!');
+  res.send('You\'ve reached the API! API calls will only be made after visiting https://moveitapi-benebel.herokuapp.com/makecalls/CITYNAME in order to prevent accidental or unnecessary calls to some APIs with low daily limits.');
 });
 
 router.get('/makecalls/:city', function(req, res, next) {
