@@ -11,11 +11,7 @@
     <script src="js/controllers/main_controller.js"></script>
     <script src="js/services/prefs_service.js"></script>
     <script src="js/services/api_service.js"></script>
-    <script src="js/data/sports/mlb.js"></script>
-    <script src="js/data/sports/mls.js"></script>
-    <script src="js/data/sports/nba.js"></script>
-    <script src="js/data/sports/nfl.js"></script>
-    <script src="js/data/sports/nhl.js"></script>
+    <script src="js/data/sampleData.js"></script>
     <script src="js/data/areas.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
   </head>
@@ -35,7 +31,8 @@
           </button>
         </ion-header-bar>
         <ion-content scroll="false">
-          Match cards will go here!
+          <p>Match cards will go here (and data will not)!</p>
+          {{displayData}}
         </ion-content>
       </ion-side-menu-content>
       <ion-side-menu side="left">
