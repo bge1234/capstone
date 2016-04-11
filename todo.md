@@ -1,10 +1,7 @@
-- Get Nmuta's help with accessing properties of COL API.
-- Get for loop working again on COL API (in order to do all cities dynamically instead of just the first).
 - Get trails API call working (figure out how to use headers in request function).
-- Save actual data of APIs other than COL to my output object.
 
-- Generate and copy JSON from back end into front end in case Heroku has problems during presentation.
-- Call JSON from back end and display in front end.
+- Set up looping on front end.
+- Call JSONs from back end to front end, save locally, display local copy in app, and set up local copy for use during presentation.
 - Clean up API stuff and data in front end that were moved to back end.
 - Deploy to firebase and send links e-mail to Nmuta.
 
