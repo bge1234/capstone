@@ -1,5 +1,6 @@
-- Do all API calls from back end (move out of service), triggered by the get route for my internal API call. Parse and send relevant data from all Postgres contents and API calls as a single JSON. Don't need to send city list as it will be included in the final JSON ([{city: "cityname", data: []}, {city: "city2name"], data: []})
+- Make API calls and save data to output JSON.
 - Make sure CORS isn't an issue in both Chrome and iPhone emulator. Fix it if it is.
+- Copy JSON from back end into front end in case Heroku is a problem during presentation.
 - In main controller, iterate through my JSON object to match data against user prefs. Use separate function for each category, then use one master function to call them all.
 
 - Make it Tinder style with cards. On swipe right, it goes into a container to be reviewed later. Swipe left, and it's gone.
