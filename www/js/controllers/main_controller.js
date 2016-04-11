@@ -58,7 +58,18 @@ app.controller("MainController", function($scope, $timeout, $ionicModal, prefsSe
 
   $scope.initApiData = function() {
     apiService.init();
+    // getSalary("Denver");
+  }
+
+  function getSalary(city) {
     if($scope.set_of_prefs.occupation !== undefined)
+      for (var i = 0; i < areas.length; i++) {
+        if(areas[i]["text"] === city) {
+          console.log("Found " + city + "!");
+          console.log(areas[i]["code"]);
+          apiService.apiCall("http://api.bls.gov/publicAPI/v2/timeseries/data/OEUM00" + areas[i]["code"] + "000000" + $scope.set_of_prefs.occupation + "04");
+        }
+      }
     // apiService.apiCall("http://api.bls.gov/publicAPI/v2/timeseries/data/OEUM + AREA + 000000" + $scope.set_of_prefs.occupation + "04");
   }
 });
