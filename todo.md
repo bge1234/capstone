@@ -3,8 +3,8 @@ Cost of living (better one) - http://www.numbeo.com/api/doc.jsp key: y8cjt0c06w8
 
 Monday:
   - Set up back end and deploy to Heroku.
-  - Do all API calls from back end (move out of service), triggered by the get route for my internal API call. Parse and send relevant data as a single JSON.
   - Move sports, areas, and city list from service to Postgres (Mongo?).
+  - Do all API calls from back end (move out of service), triggered by the get route for my internal API call. Parse and send relevant data from all Postgres contents and API calls as a single JSON.
   - Make sure CORS isn't an issue in both Chrome and iPhone emulator. Fix it if it is.
   - In main controller, iterate through my JSON object to match data against user prefs. Use separate function for each category, then use one master function to call them all.
 
