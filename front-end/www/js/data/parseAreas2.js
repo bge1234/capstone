@@ -3,7 +3,7 @@ var input = " code: '0', text: 'National' }, { code: '11500', text: 'Anniston' }
 function parse(input) {
   var split = input.split("}, {");
   for (var i = 0; i < split.length; i++) {
-    console.log("knex('areas').insert({" + split[i] + "},");
+    console.log("knex('areas').insert({" + split[i] + "}),");
   }
 }
 
