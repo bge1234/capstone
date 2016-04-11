@@ -1,0 +1,9 @@
+{
+  "firebase": "moveit-benebel",
+  "public": "public",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
