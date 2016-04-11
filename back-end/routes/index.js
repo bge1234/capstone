@@ -4,7 +4,7 @@ var knex = require('../db/knex');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  knex('cities').select().then(function(results) {
+  knex('cities').select().orderBy('id').then(function(results) {
     knex('sports').select().then(function(results2) {
       knex('areas').select().then(function(results3) {
         var output = [];
