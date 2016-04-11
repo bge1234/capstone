@@ -1,6 +1,5 @@
-Sunday:
-    - Cost of living - http://api.bls.gov/publicAPI/v2/timeseries/data/ + SESSIONID, session ID: http://www.bls.gov/help/hlpforma.htm#CU
-    - Cost of living (better one) - http://www.numbeo.com/api/doc.jsp key: y8cjt0c06w8o3g
+Cost of living - http://api.bls.gov/publicAPI/v2/timeseries/data/ + SESSIONID, session ID: http://www.bls.gov/help/hlpforma.htm#CU
+Cost of living (better one) - http://www.numbeo.com/api/doc.jsp key: y8cjt0c06w8o3g
 
 Monday:
   - Set up back end and deploy to Heroku.
