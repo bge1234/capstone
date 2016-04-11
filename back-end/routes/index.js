@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var request = require('request');
 var knex = require('../db/knex');
 
 router.get('/', function(req, res, next) {
@@ -60,53 +61,129 @@ router.get('/makecalls', function(req, res, next) {
           }
         }
 
-        for (var i = 0; i < output.length; i++) {
+        // for (var i = 0; i < output.length; i++) {
           // Temperature
-          // apiCall("http://api.wunderground.com/api/09199f63766e0a37/almanac/q/" + output[i]["data"]["location"]["state_abbreviation"] + "/" + output[i]["city"].split(' ').join('_') + ".json");
+          request("http://api.wunderground.com/api/09199f63766e0a37/almanac/q/" + output[0]["data"]["location"]["state_abbreviation"] + "/" + output[0]["city"].split(' ').join('_') + ".json", function (error, response, body) {
+            if (error) {
+              console.log("Error!  Request failed - " + error);
+            } else if (!error && response.statusCode === 200) {
+              console.log(body);
+              console.log(body["cpi_index"]);
+              output[0]["data"]["cpi"] += 100;
+              res.json(output);
+            }
+          });
 
           // Elevation
-          // apiCall("http://ned.usgs.gov/epqs/pqs.php?x=" + output[i]["data"]["location"]["longitude"] + "&y=" + output[i]["data"]["location"]["latitude"] + "&units=Feet&output=json");
+          request("http://ned.usgs.gov/epqs/pqs.php?x=" + output[0]["data"]["location"]["longitude"] + "&y=" + output[0]["data"]["location"]["latitude"] + "&units=Feet&output=json", function (error, response, body) {
+            if (error) {
+              console.log("Error!  Request failed - " + error);
+            } else if (!error && response.statusCode === 200) {
+              console.log(body);
+              console.log(body["cpi_index"]);
+              output[0]["data"]["cpi"] += 100;
+              res.json(output);
+            }
+          });
 
-          //Trails
-          // apiCall("https://trailapi-trailapi.p.mashape.com/?q[city_cont]=" + output[i]["city"] + "&q[country_cont]=United+States&q[state_cont]=" + output[i]["data"]["location"]["state"] + "&radius=5", {"X-Mashape-Key": "vCAJivs8Hbmshar7q8mbiQyvzgxtp196VFJjsnU83v4lteo5fQ"});
+          // Trails
+          // headers: {"X-Mashape-Key": "vCAJivs8Hbmshar7q8mbiQyvzgxtp196VFJjsnU83v4lteo5fQ"}
+          request("https://trailapi-trailapi.p.mashape.com/?q[city_cont]=" + output[i]["city"] + "&q[country_cont]=United+States&q[state_cont]=" + output[i]["data"]["location"]["state"] + "&radius=5", function (error, response, body) {
+            if (error) {
+              console.log("Error!  Request failed - " + error);
+            } else if (!error && response.statusCode === 200) {
+              console.log(body);
+              console.log(body["cpi_index"]);
+              output[0]["data"]["cpi"] += 100;
+              res.json(output);
+            }
+          });
 
-          //Parks
-          // apiCall("https://maps.googleapis.com/maps/api/place/textsearch/json?query=parks+in+" + output[i]["city"] + "&key=AIzaSyBI9s3tzAqmyq24EaLFF0E9h-Up7Eo1A3w");
+          // Parks
+          request("https://maps.googleapis.com/maps/api/place/textsearch/json?query=parks+in+" + output[0]["city"] + "&key=AIzaSyBI9s3tzAqmyq24EaLFF0E9h-Up7Eo1A3w", function (error, response, body) {
+            if (error) {
+              console.log("Error!  Request failed - " + error);
+            } else if (!error && response.statusCode === 200) {
+              console.log(body);
+              console.log(body["cpi_index"]);
+              output[0]["data"]["cpi"] += 100;
+              res.json(output);
+            }
+          });
 
-          //Museums
-          // apiCall("https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+" + output[i]["city"] + "&key=AIzaSyBI9s3tzAqmyq24EaLFF0E9h-Up7Eo1A3w");
+          // Museums
+          request("https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+" + output[0]["city"] + "&key=AIzaSyBI9s3tzAqmyq24EaLFF0E9h-Up7Eo1A3w", function (error, response, body) {
+            if (error) {
+              console.log("Error!  Request failed - " + error);
+            } else if (!error && response.statusCode === 200) {
+              console.log(body);
+              console.log(body["cpi_index"]);
+              output[0]["data"]["cpi"] += 100;
+              res.json(output);
+            }
+          });
 
-          //Universities
-          // apiCall("https://maps.googleapis.com/maps/api/place/textsearch/json?query=universities+in+" + output[i]["city"] + "&key=AIzaSyBI9s3tzAqmyq24EaLFF0E9h-Up7Eo1A3w");
+          //********
 
-          //Cost of living
-          console.log("http://www.numbeo.com/api/indices?api_key=y8cjt0c06w8o3g&query=" + output[i]["city"]);
-        }
+          // Universities
+          request("https://maps.googleapis.com/maps/api/place/textsearch/json?query=universities+in+" + output[0]["city"] + "&key=AIzaSyBI9s3tzAqmyq24EaLFF0E9h-Up7Eo1A3w", function (error, response, body) {
+            if (error) {
+              console.log("Error!  Request failed - " + error);
+            } else if (!error && response.statusCode === 200) {
+              console.log(body);
+              output[0]["data"]["cpi"] += 100;
 
-        res.json(output);
+              //Cost of living
+              request("http://www.numbeo.com/api/indices?api_key=y8cjt0c06w8o3g&query=" + output[0]["city"], function (error, response, body) {
+                if (error) {
+                  console.log("Error!  Request failed - " + error);
+                } else if (!error && response.statusCode === 200) {
+                  console.log(body);
+                  console.log(body["cpi_index"]);
+                  output[0]["data"]["cpi"] += 100;
+                  res.json(output);
+                }
+              });
+            }
+          });
+
+          // Cost of living
+          // request("http://www.numbeo.com/api/indices?api_key=y8cjt0c06w8o3g&query=" + output[0]["city"], function (error, response, body) {
+          //   if (error) {
+          //     console.log("Error!  Request failed - " + error);
+          //   } else if (!error && response.statusCode === 200) {
+          //     console.log(body);
+          //     console.log(body["cpi_index"]);
+          //     output[0]["data"]["cpi"] += 100;
+          //     res.json(output);
+          //   }
+          // });
+        // }
+
+
       });
     });
   });
 });
 
-function apiCall(url, headers) {
-  var getter = $.ajax({
-    url: url,
-    method: "GET",
-    dataType: "json",
-    headers: headers
-  });
-
-  getter.done(function(response) {
-    console.log("Yep!");
-    console.log(response);
-    return response;
-  });
-
-  getter.fail(function(response) {
-    console.log("Nope!");
-    console.log(response);
-  });
-}
+// function apiCall(url, headers) {
+//   var getter = $.ajax({
+//     url: url,
+//     method: "GET",
+//     dataType: "json",
+//     headers: headers
+//   });
+//
+//   getter.done(function(response) {
+//     console.log("Yep!");
+//     console.log(response);
+//     return response;
+//   });
+//
+//   getter.fail(function(response) {
+//     console.log("Nope!");
+//     console.log(response);
+//   });
+// }
 
 module.exports = router;
