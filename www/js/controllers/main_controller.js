@@ -58,5 +58,7 @@ app.controller("MainController", function($scope, $timeout, $ionicModal, prefsSe
 
   $scope.initApiData = function() {
     apiService.init();
+    if($scope.set_of_prefs.occupation !== undefined)
+    // apiService.apiCall("http://api.bls.gov/publicAPI/v2/timeseries/data/OEUM + AREA + 000000" + $scope.set_of_prefs.occupation + "04");
   }
 });
