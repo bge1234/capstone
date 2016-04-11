@@ -1,6 +1,3 @@
-Cost of living - http://api.bls.gov/publicAPI/v2/timeseries/data/ + SESSIONID, session ID: http://www.bls.gov/help/hlpforma.htm#CU
-Cost of living (better one) - http://www.numbeo.com/api/doc.jsp key: y8cjt0c06w8o3g
-
 - Set up back end and deploy to Heroku.
 - Move sports, areas, and city list from service to Postgres (Mongo?).
 - Do all API calls from back end (move out of service), triggered by the get route for my internal API call. Parse and send relevant data from all Postgres contents and API calls as a single JSON. Don't need to send city list as it will be included in the final JSON ([{city: "cityname", data: []}, {city: "city2name"], data: []})

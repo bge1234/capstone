@@ -124,6 +124,9 @@ app.factory('apiService', function() {
         //   if(nhl[j]["city"] === this.cities[i]["city"].split('+').join(' '))
         //     console.log("  " + nhl[j]["team"] + " (NHL)");
         // }
+
+        //Cost of living
+        // this.apiCall("http://www.numbeo.com/api/indices?api_key=y8cjt0c06w8o3g&query=" + this.cities[i]["city"]);
       }
     },
     apiCall: function(url, headers) {
