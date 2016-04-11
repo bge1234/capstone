@@ -2,8 +2,11 @@ var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
+  res.send('You\'ve reached the API!');
+});
+
+router.get('/makecalls', function(req, res, next) {
   knex('cities').select().orderBy('id').then(function(results) {
     knex('sports').select().then(function(results2) {
       knex('areas').select().then(function(results3) {
