@@ -57,89 +57,87 @@ router.get('/makecalls/:city', function(req, res, next) {
         }
 
         // Load rest of API results into output.data
-          // Temperature
-          request("http://api.wunderground.com/api/09199f63766e0a37/almanac/q/" + output["data"]["location"]["state_abbreviation"] + "/" + output["city"].split(' ').join('_') + ".json", function (error, response, body) {
-            if (error) {
-              console.log("Error!  Request failed - " + error);
-            }
-            else if (!error && response.statusCode === 200) {
-              var realbody = JSON.parse(body);
-              output["data"]["temperature"] = {
-                average_high: realbody["almanac"]["temp_high"]["normal"]["F"],
-                average_low: realbody["almanac"]["temp_low"]["normal"]["F"],
-                record_high: realbody["almanac"]["temp_high"]["record"]["F"],
-                record_low: realbody["almanac"]["temp_low"]["record"]["F"]};
+        // Temperature
+        request("http://api.wunderground.com/api/09199f63766e0a37/almanac/q/" + output["data"]["location"]["state_abbreviation"] + "/" + output["city"].split(' ').join('_') + ".json", function (error, response, body) {
+          if (error) {
+            console.log("Error!  Request failed - " + error);
+          }
+          else if (!error && response.statusCode === 200) {
+            var realbody = JSON.parse(body);
+            output["data"]["temperature"] = {
+              average_high: realbody["almanac"]["temp_high"]["normal"]["F"],
+              average_low: realbody["almanac"]["temp_low"]["normal"]["F"],
+              record_high: realbody["almanac"]["temp_high"]["record"]["F"],
+              record_low: realbody["almanac"]["temp_low"]["record"]["F"]};
 
-              // Elevation
-              request("http://ned.usgs.gov/epqs/pqs.php?x=" + output["data"]["location"]["longitude"] + "&y=" + output["data"]["location"]["latitude"] + "&units=Feet&output=json", function (error, response, body) {
-                if (error) {
-                  console.log("Error!  Request failed - " + error);
-                }
-                else if (!error && response.statusCode === 200) {
-                  var realbody = JSON.parse(body);
-                  output["data"]["elevation"] = realbody["USGS_Elevation_Point_Query_Service"]["Elevation_Query"]["Elevation"];
+            // Elevation
+            request("http://ned.usgs.gov/epqs/pqs.php?x=" + output["data"]["location"]["longitude"] + "&y=" + output["data"]["location"]["latitude"] + "&units=Feet&output=json", function (error, response, body) {
+              if (error) {
+                console.log("Error!  Request failed - " + error);
+              }
+              else if (!error && response.statusCode === 200) {
+                var realbody = JSON.parse(body);
+                output["data"]["elevation"] = realbody["USGS_Elevation_Point_Query_Service"]["Elevation_Query"]["Elevation"];
 
-                  // Trails
-                  // headers: {"X-Mashape-Key": "vCAJivs8Hbmshar7q8mbiQyvzgxtp196VFJjsnU83v4lteo5fQ"}
-                  // request("https://trailapi-trailapi.p.mashape.com/?q[city_cont]=" + output["city"] + "&q[country_cont]=United+States&q[state_cont]=" + output["data"]["location"]["state"] + "&radius=5", function (error, response, body) {
-                  request("http://ned.usgs.gov/epqs/pqs.php?x=" + output["data"]["location"]["longitude"] + "&y=" + output["data"]["location"]["latitude"] + "&units=Feet&output=json", function (error, response, body) {
-                    if (error) {
-                      console.log("Error!  Request failed - " + error);
-                    }
-                    else if (!error && response.statusCode === 200) {
-                      var realbody = JSON.parse(body);
-                      output["data"]["number_of_trails"] = realbody["USGS_Elevation_Point_Query_Service"]["Elevation_Query"]["Elevation"];
+                // Trails
+                request({uri: "https://trailapi-trailapi.p.mashape.com/?q[city_cont]=" + output["city"] + "&q[country_cont]=United+States&q[state_cont]=" + output["data"]["location"]["state"] + "&radius=5", headers: {"X-Mashape-Key": "vCAJivs8Hbmshar7q8mbiQyvzgxtp196VFJjsnU83v4lteo5fQ"}}, function (error, response, body) {
+                  if (error) {
+                    console.log("Error!  Request failed - " + error);
+                  }
+                  else if (!error && response.statusCode === 200) {
+                    var realbody = JSON.parse(body);
+                    output["data"]["number_of_trails"] = realbody["places"][0]["activities"].length;
 
-                      // Parks
-                      request("https://maps.googleapis.com/maps/api/place/textsearch/json?query=parks+in+" + output["city"] + "&key=AIzaSyBI9s3tzAqmyq24EaLFF0E9h-Up7Eo1A3w", function (error, response, body) {
-                        if (error) {
-                          console.log("Error!  Request failed - " + error);
-                        }
-                        else if (!error && response.statusCode === 200) {
-                          var realbody = JSON.parse(body);
-                          output["data"]["number_of_parks"] = realbody["results"].length;
+                    // Parks
+                    request("https://maps.googleapis.com/maps/api/place/textsearch/json?query=parks+in+" + output["city"] + "&key=AIzaSyBI9s3tzAqmyq24EaLFF0E9h-Up7Eo1A3w", function (error, response, body) {
+                      if (error) {
+                        console.log("Error!  Request failed - " + error);
+                      }
+                      else if (!error && response.statusCode === 200) {
+                        var realbody = JSON.parse(body);
+                        output["data"]["number_of_parks"] = realbody["results"].length;
 
-                          // Museums
-                          request("https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+" + output["city"] + "&key=AIzaSyBI9s3tzAqmyq24EaLFF0E9h-Up7Eo1A3w", function (error, response, body) {
-                            if (error) {
-                              console.log("Error!  Request failed - " + error);
-                            }
-                            else if (!error && response.statusCode === 200) {
-                              var realbody = JSON.parse(body);
-                              output["data"]["number_of_museums"] = realbody["results"].length;
+                        // Museums
+                        request("https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+" + output["city"] + "&key=AIzaSyBI9s3tzAqmyq24EaLFF0E9h-Up7Eo1A3w", function (error, response, body) {
+                          if (error) {
+                            console.log("Error!  Request failed - " + error);
+                          }
+                          else if (!error && response.statusCode === 200) {
+                            var realbody = JSON.parse(body);
+                            output["data"]["number_of_museums"] = realbody["results"].length;
 
-                              // Universities
-                              request("https://maps.googleapis.com/maps/api/place/textsearch/json?query=universities+in+" + output["city"] + "&key=AIzaSyBI9s3tzAqmyq24EaLFF0E9h-Up7Eo1A3w", function (error, response, body) {
-                                if (error) {
-                                  console.log("Error!  Request failed - " + error);
-                                }
-                                else if (!error && response.statusCode === 200) {
-                                  var realbody = JSON.parse(body);
-                                  output["data"]["number_of_universities"] = realbody["results"].length;
+                            // Universities
+                            request("https://maps.googleapis.com/maps/api/place/textsearch/json?query=universities+in+" + output["city"] + "&key=AIzaSyBI9s3tzAqmyq24EaLFF0E9h-Up7Eo1A3w", function (error, response, body) {
+                              if (error) {
+                                console.log("Error!  Request failed - " + error);
+                              }
+                              else if (!error && response.statusCode === 200) {
+                                var realbody = JSON.parse(body);
+                                output["data"]["number_of_universities"] = realbody["results"].length;
 
-                                  //Cost of living
-                                  request("http://www.numbeo.com/api/indices?api_key=y8cjt0c06w8o3g&query=" + output["city"], function (error, response, body) {
-                                    if (error) {
-                                      console.log("Error!  Request failed - " + error);
-                                    }
-                                    else if (!error && response.statusCode === 200) {
-                                      var realbody = JSON.parse(body);
-                                      output["data"]["cpi"] = realbody["cpi_index"];
-                                      res.json(output);
-                                    }
-                                  });
-                                }
-                              });
-                            }
-                          });
-                        }
-                      });
-                    }
-                  });
-                }
-              });
-            }
-          });
+                                //Cost of living
+                                request("http://www.numbeo.com/api/indices?api_key=y8cjt0c06w8o3g&query=" + output["city"], function (error, response, body) {
+                                  if (error) {
+                                    console.log("Error!  Request failed - " + error);
+                                  }
+                                  else if (!error && response.statusCode === 200) {
+                                    var realbody = JSON.parse(body);
+                                    output["data"]["cpi"] = realbody["cpi_index"];
+                                    res.json(output);
+                                  }
+                                });
+                              }
+                            });
+                          }
+                        });
+                      }
+                    });
+                  }
+                });
+              }
+            });
+          }
+        });
       });
     });
   });
