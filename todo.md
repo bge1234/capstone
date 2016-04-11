@@ -9,7 +9,7 @@ Monday:
   - Do all API calls from back end (move out of service), triggered by the get route for my internal API call. Parse and send relevant data as a single JSON.
   - Move sports and city list from service to Postgres (Mongo?).
   - Make sure CORS isn't an issue in both Chrome and iPhone emulator. Fix it if it is.
-  - In main controller, iterate through my JSON object to match data against user prefs. Use separate function for each API/set of APIs, and use master function to call them all.
+  - In main controller, iterate through my JSON object to match data against user prefs. Use separate function for each category, then use one master function to call them all.
 
 Tuesday: Make it Tinder style with cards. On swipe right, it goes into a container to be reviewed later. Swipe left, and it's gone.
 
