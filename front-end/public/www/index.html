@@ -50,14 +50,14 @@
         <ion-content>
           <ion-list>
             <ion-item>
-              Heat and cold:
-              <span ng-show="set_of_prefs.heatcold==='both'">I tolerate both well.</span>
+              <span ng-show="set_of_prefs.heatcold==='both'">I tolerate both hot or cold weather well.</span>
               <span ng-show="set_of_prefs.heatcold==='noheat'">I don't like hot weather.'</span>
               <span ng-show="set_of_prefs.heatcold==='nocold'">I don't like cold weather.'</span>
               <span ng-show="set_of_prefs.heatcold==='neither'">I don't like either hot or cold weather.'</span>
             </ion-item>
             <ion-item>
-              {{set_of_prefs.active}}
+              <span ng-show="set_of_prefs.active==='true'">I am physically active.</span>
+              <span ng-show="set_of_prefs.active==='false'">I am not physically active.</span>
             </ion-item>
             <ion-item>
               {{set_of_prefs.activities}}
@@ -96,11 +96,11 @@
           <form ng-submit="createPrefs(prefs)">
             <div class="list">
               <input type="hidden" ng-model="prefs.saved=true">
-              <label class="item">How well do you tolerate heat and cold?<br><br>
+              <label class="item">How well do you tolerate hot or cold weather?<br><br>
                 <select ng-model="prefs.heatcold">
                   <option value="both" selected="true">I tolerate both well.
-                  <option value="noheat">I don't like heat.'
-                  <option value="nocold">I don't like cold.'
+                  <option value="noheat">I don't like hot weather.'
+                  <option value="nocold">I don't like cold weather.'
                   <option value="neither">I don't like either.'
                 </select>
               </label>

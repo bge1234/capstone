@@ -53,97 +53,77 @@ app.controller("MainController", function($scope, $timeout, $ionicModal, prefsSe
   $scope.matching = function(prefs) {
     var matchedCities = [];
 
-    // for (var i = 0; i < cityData.length; i++) {
-    //   if(matchedCities.length === 0)
-    //     matchedCities.push(cityData[i]["city"]);
-    //
-    //   var found = false;
-    //
-    //   for (var j = 0; j < matchedCities.length; j++) {
-    //     if(matchedCities[j] === cityData[i]["city"])
-    //       found = true;
-    //   }
-    //
-    // if(!found)
-    //   matchedCities.push(cityData[i]["city"]);
-    // }
+    for (var i = 0; i < cityData.length; i++) {
+      matchedCities.push({
+        city: cityData[i]["city"],
+        match_reasons: [],
+        fail_reasons: [],
+        financial: calculateFinance(prefs.occupation, i)
+      });
+    }
 
     for (var i = 0; i < cityData.length; i++) {
       if(prefs.heatcold !== undefined) {
         if(matchTemperature(prefs.heatcold, i)) {
-          matchedCities.push({
-            city: cityData[i]["city"],
-            reason: "temperature"
-          });
+          matchedCities[i]["match_reasons"].push("temperature");
+        }
+        else {
+          matchedCities[i]["fail_reasons"].push("temperature");
         }
       }
       if(prefs.active !== undefined) {
         if(matchActive(prefs.active, i)) {
-          matchedCities.push({
-            city: cityData[i]["city"],
-            reason: "active"
-          });
+          matchedCities[i]["match_reasons"].push("active");
+        }
+        else {
+          matchedCities[i]["fail_reasons"].push("temperature");
         }
       }
       if(prefs.activities !== undefined) {
-        if(matchActivities(prefs.activities, i)) {
-          matchedCities.push({
-            city: cityData[i]["city"],
-            reason: "activities"
-          });
-        }
+        if(matchActivities(prefs.activities, i))
+          matchedCities[i]["match_reasons"].push("activities");
+        else
+          matchedCities[i]["fail_reasons"].push("temperature");
       }
       if(prefs.culture !== undefined) {
-        if(matchCulture(prefs.culture, i)) {
-          matchedCities.push({
-            city: cityData[i]["city"],
-            reason: "culture"
-          });
-        }
+        if(matchCulture(prefs.culture, i))
+          matchedCities[i]["match_reasons"].push("culture");
+        else
+          matchedCities[i]["fail_reasons"].push("temperature");
       }
       if(prefs.children !== undefined) {
-        if(matchChildren(prefs.children, i)) {
-          matchedCities.push({
-            city: cityData[i]["city"],
-            reason: "children"
-          });
-        }
+        if(matchChildren(prefs.children, i))
+          matchedCities[i]["match_reasons"].push("children");
+        else
+          matchedCities[i]["fail_reasons"].push("temperature");
       }
       if(prefs.dog !== undefined) {
-        if(matchDog(prefs.dog, i)) {
-          matchedCities.push({
-            city: cityData[i]["city"],
-            reason: "dog"
-          });
-        }
+        if(matchDog(prefs.dog, i))
+          matchedCities[i]["match_reasons"].push("dog");
+        else
+          matchedCities[i]["fail_reasons"].push("temperature");
       }
       if(prefs.entrepreneur !== undefined) {
         if(matchEntrepreneur(prefs.entrepreneur, i))
-          matchedCities.push({
-            city: cityData[i]["city"],
-            reason: "entrepreneur"
-          });
+          matchedCities[i]["match_reasons"].push("entrepreneur");
+        else
+          matchedCities[i]["fail_reasons"].push("temperature");
       }
       if(prefs.population !== undefined) {
-        if(matchPopulation(prefs.population, i)) {
-          matchedCities.push({
-            city: cityData[i]["city"],
-            reason: "population"
-          });
-        }
+        if(matchPopulation(prefs.population, i))
+          matchedCities[i]["match_reasons"].push("population");
+        else
+          matchedCities[i]["fail_reasons"].push("temperature");
       }
       if(prefs.sports !== undefined) {
-        if(matchSports(prefs.sports, i)) {
-          matchedCities.push({
-            city: cityData[i]["city"],
-            reason: "sports"
-          });
-        }
+        if(matchSports(prefs.sports, i))
+          matchedCities[i]["match_reasons"].push("sports");
+        else
+          matchedCities[i]["fail_reasons"].push("temperature");
       }
     }
 
     $scope.displayData = matchedCities;
-    console.log(matchedCities);
   }
 
   function matchTemperature(heatcold, i) {
@@ -151,7 +131,7 @@ app.controller("MainController", function($scope, $timeout, $ionicModal, prefsSe
 
     if((heatcold === "noheat" || heatcold === "neither") && (cityData[i]["data"]["temperature"]["average_high"] > 70 || cityData[i]["data"]["temperature"]["record_high"] > 90))
       isMatch = false;
-    else if((heatcold === "nocold" || heatcold === "neither") && (cityData[i]["data"]["temperature"]["average_high"] > 40 || cityData[i]["data"]["temperature"]["record_high"] > 20))
+    else if((heatcold === "nocold" || heatcold === "neither") && (cityData[i]["data"]["temperature"]["average_high"] < 40 || cityData[i]["data"]["temperature"]["record_low"] < 20))
       isMatch = false;
 
     return isMatch;
@@ -264,6 +244,15 @@ app.controller("MainController", function($scope, $timeout, $ionicModal, prefsSe
 
     var highlow = "";
     var comfortLevel = "";
+    var salary = cityData[i]["data"]["sample_salary"];
+    var salaryleft = 0;
+    var salaryright = 0;
+
+    if(salary > 999) {
+      salaryleft = Math.floor(salary / 1000);
+      salaryright = salary - (salaryleft * 1000);
+      salary = "$" + salaryleft + "," + salaryright;
+    }
 
     if(cityData[i]["data"]["cpi"] > 75)
       highlow = "a high";
@@ -273,13 +262,13 @@ app.controller("MainController", function($scope, $timeout, $ionicModal, prefsSe
       highlow = "an average";
 
     if(cityData[i]["data"]["sample_salary"] > 90000)
-      comfortLevel = "should be more than comfortable there financially";
+      comfortLevel = ", you should be more than comfortable there financially.";
     else if(cityData[i]["data"]["sample_salary"] < 30000)
-      comfortLevel = "might struggle there financially";
+      comfortLevel = ", you might struggle there financially.";
     else
-      comfortLevel = "should be relatively comfortable there financially";
+      comfortLevel = ", you should be relatively comfortable there financially.";
 
-    return cityData[i]["city"] + " has " + highlow + " cost of living. At an average salary of $" + cityData[i]["data"]["sample_salary"] + ", you " + comfortLevel + ".";
+    return cityData[i]["city"] + " has " + highlow + " cost of living. At an average salary of " + salary + comfortLevel;
   }
 
   // The remainder below should be uncommented in order to use live data.

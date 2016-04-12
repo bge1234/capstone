@@ -1,12 +1,8 @@
-- Duplicate matches add to reasons, not new elements in matchedCities.
-- Display matches as human-readable list with reasons.
-
 - Clean up prefs display (see heatcold for example).
 - Make prefs form show already-entered prefs like on restaurant edit page.
 
+- Display matches as human-readable list with reasons.
 - Add Tinder cards. On swipe right, the city goes into a container to be reviewed later. Swipe left, and it's gone.
-
-- Return partially-matched cities.
 
 Presentation prep:
 1. Who are you?
@@ -18,7 +14,7 @@ Presentation prep:
 4. Show the app
   - Make it look better.
 5. What challenges did you run into and how did you overcome them?
-  - Discuss which specific APIs I used as well as specifically what the challenges with them were.
+  - Discuss which specific APIs I used as well as specifically what the challenges with them were. Call out the BLS one.
   - Brainstorm some more challenges.
 6. Finish with a slide with your name, github, linkedIn, say your name again
   - Make this slide.
