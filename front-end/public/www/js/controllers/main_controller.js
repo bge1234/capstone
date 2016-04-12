@@ -70,16 +70,18 @@ app.controller("MainController", function($scope, $timeout, $ionicModal, prefsSe
 
     $scope.displayData = matchedCities;
 
-    console.log(matchTemperature(prefs.heatcold, 5));
-    matchActive(prefs.active);
-    matchActivities(prefs.activities);
-    matchCulture(prefs.culture);
-    matchChildren(prefs.children);
-    matchDog(prefs.dog);
-    matchEntrepreneur(prefs.entrepreneur);
-    matchPopulation(prefs.population);
-    matchSports(prefs.sports);
-    matchOccupation(prefs.occupation);
+    matchTemperature(prefs.heatcold, 0);
+    matchActive(prefs.active, 0);
+    if(prefs.activities !== undefined)
+      matchActivities(prefs.activities, 0);
+    if(prefs.culture !== undefined)
+      matchCulture(prefs.culture, 0);
+    matchChildren(prefs.children, 0);
+    matchDog(prefs.dog, 0);
+    matchEntrepreneur(prefs.entrepreneur, 0);
+    console.log(matchPopulation(prefs.population, 0));
+    matchSports(prefs.sports, 0);
+    matchOccupation(prefs.occupation, 0);
   }
 
   function matchTemperature(heatcold, i) {
@@ -93,39 +95,81 @@ app.controller("MainController", function($scope, $timeout, $ionicModal, prefsSe
     return isMatch;
   }
 
-  function matchActive(active) {
+  function matchActive(active, i) {
+    var isMatch = true;
+
+    if(active === "true" && cityData[i]["data"]["number_of_trails"] === 0)
+      isMatch = false;
+
+    return isMatch;
+  }
+
+  function matchActivities(activities, i) {
+    var isMatch = true;
+
+    if((activities.running === true || activities.hiking === true || activities.cycling === true) && cityData[i]["data"]["number_of_trails"] === 0)
+        isMatch = false;
+
+    return isMatch;
+  }
+
+  function matchCulture(culture, i) {
+    var isMatch = true;
+
+    if(culture.art && cityData[i]["data"]["number_of_museums"] === 0)
+        isMatch = false;
+
+    return isMatch;
+  }
+
+  function matchChildren(children, i) {
+    var isMatch = true;
+
+    if(children === "true" && cityData[i]["data"]["number_of_universities"] === 0)
+      isMatch = false;
+
+    return isMatch;
+  }
+
+  function matchDog(dog, i) {
+    var isMatch = true;
+
+    if(dog === "true" && cityData[i]["data"]["number_of_parks"] === 0)
+      isMatch = false;
+
+    return isMatch;
+  }
+
+  function matchEntrepreneur(entrepreneur, i) {
+    var isMatch = true;
+
+    if(entrepreneur === "true" && cityData[i]["data"]["number_of_universities"] === 0)
+      isMatch = false;
+
+    return isMatch;
+  }
+
+  function matchPopulation(population, i) {
+    var isMatch = true;
+
+    if(population === "urban" && cityData[i]["data"]["population"] < 100000)
+      isMatch = false;
+    else if(population === "rural" && cityData[i]["data"]["population"] > 10000)
+      isMatch = false;
+    else if(population === "suburban" && (cityData[i]["data"]["population"] < 10000 || cityData[i]["data"]["population"] > 100000))
+      isMatch = false;
+
+    return isMatch;
+  }
+
+  function matchSports(sports, i) {
 
   }
 
-  function matchActivities(activities) {
+  function matchOccupation(occupation, i) {
+    //This function will have to be re-written in order to use live data.  The API call should be made to cityData[i]["data"]["salary_api_url_head"] + occupation + cityData[i]["data"]["salary_api_url_head"]
 
-  }
 
-  function matchCulture(culture) {
-
-  }
-
-  function matchChildren(children) {
-
-  }
-
-  function matchDog(dog) {
-
-  }
-
-  function matchEntrepreneur(entrepreneur) {
-
-  }
-
-  function matchPopulation(population) {
-
-  }
-
-  function matchSports(sports) {
-
-  }
-
-  function matchOccupation(occupation) {
 
   }
 
