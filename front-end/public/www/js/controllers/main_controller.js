@@ -69,34 +69,81 @@ app.controller("MainController", function($scope, $timeout, $ionicModal, prefsSe
     // }
 
     for (var i = 0; i < cityData.length; i++) {
-      if(prefs.temperature !== undefined)
-        matchTemperature(prefs.heatcold, i);
+      if(prefs.heatcold !== undefined) {
+        if(matchTemperature(prefs.heatcold, i)) {
+          matchedCities.push({
+            city: cityData[i]["city"],
+            reason: "temperature"
+          });
+        }
+      }
+      if(prefs.active !== undefined) {
+        if(matchActive(prefs.active, i)) {
+          matchedCities.push({
+            city: cityData[i]["city"],
+            reason: "active"
+          });
+        }
+      }
+      if(prefs.activities !== undefined) {
+        if(matchActivities(prefs.activities, i)) {
+          matchedCities.push({
+            city: cityData[i]["city"],
+            reason: "activities"
+          });
+        }
+      }
+      if(prefs.culture !== undefined) {
+        if(matchCulture(prefs.culture, i)) {
+          matchedCities.push({
+            city: cityData[i]["city"],
+            reason: "culture"
+          });
+        }
+      }
+      if(prefs.children !== undefined) {
+        if(matchChildren(prefs.children, i)) {
+          matchedCities.push({
+            city: cityData[i]["city"],
+            reason: "children"
+          });
+        }
+      }
+      if(prefs.dog !== undefined) {
+        if(matchDog(prefs.dog, i)) {
+          matchedCities.push({
+            city: cityData[i]["city"],
+            reason: "dog"
+          });
+        }
+      }
+      if(prefs.entrepreneur !== undefined) {
+        if(matchEntrepreneur(prefs.entrepreneur, i))
+          matchedCities.push({
+            city: cityData[i]["city"],
+            reason: "entrepreneur"
+          });
+      }
+      if(prefs.population !== undefined) {
+        if(matchPopulation(prefs.population, i)) {
+          matchedCities.push({
+            city: cityData[i]["city"],
+            reason: "population"
+          });
+        }
+      }
+      if(prefs.sports !== undefined) {
+        if(matchSports(prefs.sports, i)) {
+          matchedCities.push({
+            city: cityData[i]["city"],
+            reason: "sports"
+          });
+        }
+      }
     }
 
     $scope.displayData = matchedCities;
-
-    // for (var i = 0; i < cityData.length; i++) {
-    //   if(prefs.temperature !== undefined)
-    //     matchTemperature(prefs.heatcold, i);
-    //   if(prefs.active !== undefined)
-    //     matchActive(prefs.active, i);
-    //   if(prefs.activities !== undefined)
-    //     matchActivities(prefs.activities, i);
-    //   if(prefs.culture !== undefined)
-    //     matchCulture(prefs.culture, i);
-    //   if(prefs.children !== undefined)
-    //     matchChildren(prefs.children, i);
-    //   if(prefs.dog !== undefined)
-    //     matchDog(prefs.dog, i);
-    //   if(prefs.entrepreneur !== undefined)
-    //     matchEntrepreneur(prefs.entrepreneur, i);
-    //   if(prefs.population !== undefined)
-    //     matchPopulation(prefs.population, i);
-    //   if(prefs.sports !== undefined)
-    //     matchSports(prefs.sports, i);
-    //   if(prefs.occupation !== undefined)
-    //     calculateFinance(prefs.occupation, i);
-    // }
+    console.log(matchedCities);
   }
 
   function matchTemperature(heatcold, i) {

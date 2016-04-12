@@ -1,9 +1,12 @@
-- Put all matching functions inside FOR loop of main matching function. Be sure to save reasons for match along with matched cities.
-- Display matches as list along with reasons.
+- Duplicate matches add to reasons, not new elements in matchedCities.
+- Display matches as human-readable list with reasons.
 
 - Clean up prefs display (see heatcold for example).
-- Add Tinder cards. On swipe right, the city goes into a container to be reviewed later. Swipe left, and it's gone.
 - Make prefs form show already-entered prefs like on restaurant edit page.
+
+- Add Tinder cards. On swipe right, the city goes into a container to be reviewed later. Swipe left, and it's gone.
+
+- Return partially-matched cities.
 
 Presentation prep:
 1. Who are you?
