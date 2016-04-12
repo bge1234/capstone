@@ -53,35 +53,50 @@ app.controller("MainController", function($scope, $timeout, $ionicModal, prefsSe
   $scope.matching = function(prefs) {
     var matchedCities = [];
 
+    // for (var i = 0; i < cityData.length; i++) {
+    //   if(matchedCities.length === 0)
+    //     matchedCities.push(cityData[i]["city"]);
+    //
+    //   var found = false;
+    //
+    //   for (var j = 0; j < matchedCities.length; j++) {
+    //     if(matchedCities[j] === cityData[i]["city"])
+    //       found = true;
+    //   }
+    //
+    // if(!found)
+    //   matchedCities.push(cityData[i]["city"]);
+    // }
+
     for (var i = 0; i < cityData.length; i++) {
-      if(matchedCities.length === 0)
-        matchedCities.push(cityData[i]["city"]);
-
-      var found = false;
-
-      for (var j = 0; j < matchedCities.length; j++) {
-        if(matchedCities[j] === cityData[i]["city"])
-          found = true;
-      }
-
-    if(!found)
-      matchedCities.push(cityData[i]["city"]);
+      if(prefs.temperature !== undefined)
+        matchTemperature(prefs.heatcold, i);
     }
 
     $scope.displayData = matchedCities;
 
-    matchTemperature(prefs.heatcold, 0);
-    matchActive(prefs.active, 0);
-    if(prefs.activities !== undefined)
-      matchActivities(prefs.activities, 0);
-    if(prefs.culture !== undefined)
-      matchCulture(prefs.culture, 0);
-    matchChildren(prefs.children, 0);
-    matchDog(prefs.dog, 0);
-    matchEntrepreneur(prefs.entrepreneur, 0);
-    console.log(matchPopulation(prefs.population, 0));
-    matchSports(prefs.sports, 0);
-    matchOccupation(prefs.occupation, 0);
+    // for (var i = 0; i < cityData.length; i++) {
+    //   if(prefs.temperature !== undefined)
+    //     matchTemperature(prefs.heatcold, i);
+    //   if(prefs.active !== undefined)
+    //     matchActive(prefs.active, i);
+    //   if(prefs.activities !== undefined)
+    //     matchActivities(prefs.activities, i);
+    //   if(prefs.culture !== undefined)
+    //     matchCulture(prefs.culture, i);
+    //   if(prefs.children !== undefined)
+    //     matchChildren(prefs.children, i);
+    //   if(prefs.dog !== undefined)
+    //     matchDog(prefs.dog, i);
+    //   if(prefs.entrepreneur !== undefined)
+    //     matchEntrepreneur(prefs.entrepreneur, i);
+    //   if(prefs.population !== undefined)
+    //     matchPopulation(prefs.population, i);
+    //   if(prefs.sports !== undefined)
+    //     matchSports(prefs.sports, i);
+    //   if(prefs.occupation !== undefined)
+    //     calculateFinance(prefs.occupation, i);
+    // }
   }
 
   function matchTemperature(heatcold, i) {
@@ -163,14 +178,61 @@ app.controller("MainController", function($scope, $timeout, $ionicModal, prefsSe
   }
 
   function matchSports(sports, i) {
+    var isMatch = false;
 
+    // See which sports the city has
+    var mlb, mls, nba, nfl, nhl = false;
+
+    for (var j = 0; j < cityData[i]["data"]["sports"].length; j++) {
+      var split = cityData[i]["data"]["sports"][j].split(' ');
+      if(split[split.length - 1] === "(MLB)")
+        mlb = true;
+      if(split[split.length - 1] === "(MLS)")
+        mls = true;
+      if(split[split.length - 1] === "(NBA)")
+        nba = true;
+      if(split[split.length - 1] === "(NFL)")
+        nfl = true;
+      if(split[split.length - 1] === "(NHL)")
+        nhl = true;
+    }
+
+    // Match against user prefs
+    if(sports.baseball === true && mlb)
+      isMatch = true;
+    if(sports.soccer === true && mls)
+      isMatch = true;
+    if(sports.basketball === true && nba)
+      isMatch = true;
+    if(sports.football === true && nfl)
+      isMatch = true;
+    if(sports.hockey === true && nhl)
+      isMatch = true;
+
+    return isMatch;
   }
 
-  function matchOccupation(occupation, i) {
-    //This function will have to be re-written in order to use live data.  The API call should be made to cityData[i]["data"]["salary_api_url_head"] + occupation + cityData[i]["data"]["salary_api_url_head"]
+  function calculateFinance(occupationCode, i) {
+    //This function will have to be re-written in order to use live data.  The API call should be made to cityData[i]["data"]["salary_api_url_head"] + occupationCode + cityData[i]["data"]["salary_api_url_head"]
 
+    var highlow = "";
+    var comfortLevel = "";
 
+    if(cityData[i]["data"]["cpi"] > 75)
+      highlow = "a high";
+    else if(cityData[i]["data"]["cpi"] < 45)
+      highlow = "a low";
+    else
+      highlow = "an average";
 
+    if(cityData[i]["data"]["sample_salary"] > 90000)
+      comfortLevel = "should be more than comfortable there financially";
+    else if(cityData[i]["data"]["sample_salary"] < 30000)
+      comfortLevel = "might struggle there financially";
+    else
+      comfortLevel = "should be relatively comfortable there financially";
+
+    return cityData[i]["city"] + " has " + highlow + " cost of living. At an average salary of $" + cityData[i]["data"]["sample_salary"] + ", you " + comfortLevel + ".";
   }
 
   // The remainder below should be uncommented in order to use live data.
