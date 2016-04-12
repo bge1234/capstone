@@ -1,6 +1,4 @@
-- Clean up prefs display (see heatcold for example).
 - Make prefs form show already-entered prefs like on restaurant edit page.
-
 - Display matches as human-readable list with reasons.
 - Add Tinder cards. On swipe right, the city goes into a container to be reviewed later. Swipe left, and it's gone.
 

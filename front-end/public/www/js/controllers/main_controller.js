@@ -76,50 +76,50 @@ app.controller("MainController", function($scope, $timeout, $ionicModal, prefsSe
           matchedCities[i]["match_reasons"].push("active");
         }
         else {
-          matchedCities[i]["fail_reasons"].push("temperature");
+          matchedCities[i]["fail_reasons"].push("active");
         }
       }
       if(prefs.activities !== undefined) {
         if(matchActivities(prefs.activities, i))
           matchedCities[i]["match_reasons"].push("activities");
         else
-          matchedCities[i]["fail_reasons"].push("temperature");
+          matchedCities[i]["fail_reasons"].push("activities");
       }
       if(prefs.culture !== undefined) {
-        if(matchCulture(prefs.culture, i))
-          matchedCities[i]["match_reasons"].push("culture");
+        if(matchCulture(prefs.art, i))
+          matchedCities[i]["match_reasons"].push("art");
         else
-          matchedCities[i]["fail_reasons"].push("temperature");
+          matchedCities[i]["fail_reasons"].push("art");
       }
       if(prefs.children !== undefined) {
         if(matchChildren(prefs.children, i))
           matchedCities[i]["match_reasons"].push("children");
         else
-          matchedCities[i]["fail_reasons"].push("temperature");
+          matchedCities[i]["fail_reasons"].push("children");
       }
       if(prefs.dog !== undefined) {
         if(matchDog(prefs.dog, i))
           matchedCities[i]["match_reasons"].push("dog");
         else
-          matchedCities[i]["fail_reasons"].push("temperature");
+          matchedCities[i]["fail_reasons"].push("dog");
       }
       if(prefs.entrepreneur !== undefined) {
         if(matchEntrepreneur(prefs.entrepreneur, i))
           matchedCities[i]["match_reasons"].push("entrepreneur");
         else
-          matchedCities[i]["fail_reasons"].push("temperature");
+          matchedCities[i]["fail_reasons"].push("entrepreneur");
       }
       if(prefs.population !== undefined) {
         if(matchPopulation(prefs.population, i))
           matchedCities[i]["match_reasons"].push("population");
         else
-          matchedCities[i]["fail_reasons"].push("temperature");
+          matchedCities[i]["fail_reasons"].push("population");
       }
       if(prefs.sports !== undefined) {
         if(matchSports(prefs.sports, i))
           matchedCities[i]["match_reasons"].push("sports");
         else
-          matchedCities[i]["fail_reasons"].push("temperature");
+          matchedCities[i]["fail_reasons"].push("sports");
       }
     }
 
@@ -155,7 +155,7 @@ app.controller("MainController", function($scope, $timeout, $ionicModal, prefsSe
     return isMatch;
   }
 
-  function matchCulture(culture, i) {
+  function matchArt(art, i) {
     var isMatch = true;
 
     if(culture.art && cityData[i]["data"]["number_of_museums"] === 0)

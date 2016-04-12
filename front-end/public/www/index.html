@@ -37,51 +37,77 @@
       </ion-side-menu-content>
       <ion-side-menu side="left">
         <ion-header-bar class="bar-dark">
-          <h1 class="title">Saved matches</h1>
+          <h1 class="title">Saved Matches</h1>
         </ion-header-bar>
       </ion-side-menu>
     </ion-side-menus>
     <script id="view-prefs.html" type="text/ng-template">
       <div class="modal">
         <ion-header-bar class="bar-secondary">
-          <h1 class="title">Preferences</h1>
+          <h1 class="title">My Preferences</h1>
           <button class="button button-clear button-positive" ng-click="closeViewPrefs()">Cancel</button>
         </ion-header-bar>
         <ion-content>
           <ion-list>
             <ion-item>
-              <span ng-show="set_of_prefs.heatcold==='both'">I tolerate both hot or cold weather well.</span>
-              <span ng-show="set_of_prefs.heatcold==='noheat'">I don't like hot weather.'</span>
-              <span ng-show="set_of_prefs.heatcold==='nocold'">I don't like cold weather.'</span>
-              <span ng-show="set_of_prefs.heatcold==='neither'">I don't like either hot or cold weather.'</span>
+              <span ng-show="set_of_prefs.heatcold === undefined">No answer given for hot/cold weather.</span>
+              <span ng-show="set_of_prefs.heatcold === 'both'">I tolerate both hot or cold weather well.</span>
+              <span ng-show="set_of_prefs.heatcold === 'noheat'">I don't like hot weather.'</span>
+              <span ng-show="set_of_prefs.heatcold === 'nocold'">I don't like cold weather.'</span>
+              <span ng-show="set_of_prefs.heatcold === 'neither'">I don't like either hot or cold weather.'</span>
             </ion-item>
             <ion-item>
-              <span ng-show="set_of_prefs.active==='true'">I am physically active.</span>
-              <span ng-show="set_of_prefs.active==='false'">I am not physically active.</span>
+              <span ng-show="set_of_prefs.active === undefined">No answer given for physical activity question.</span>
+              <span ng-show="set_of_prefs.active === 'true'">I am physically active.</span>
+              <span ng-show="set_of_prefs.active === 'false'">I am not physically active.</span>
             </ion-item>
             <ion-item>
-              {{set_of_prefs.activities}}
+              <span ng-show="set_of_prefs.activities === undefined">No answer given for activities question.</span>
+              <span ng-hide="set_of_prefs.activities === undefined">Activities I enjoy:</span>
+              <span ng-show="set_of_prefs.activities.running"><br>&nbsp;&nbsp;&nbsp;&nbsp;Running</span>
+              <span ng-show="set_of_prefs.activities.hiking"><br>&nbsp;&nbsp;&nbsp;&nbsp;Hiking</span>
+              <span ng-show="set_of_prefs.activities.cycling"><br>&nbsp;&nbsp;&nbsp;&nbsp;Cycling</span>
             </ion-item>
             <ion-item>
-              {{set_of_prefs.culture}}
+              <span ng-show="set_of_prefs.art === undefined">No answer given for art question.</span>
+              <span ng-show="set_of_prefs.art === 'true'">I enjoy art.</span>
+              <span ng-show="set_of_prefs.art === 'false'">I do not enjoy art.</span>
             </ion-item>
             <ion-item>
-              {{set_of_prefs.children}}
+              <span ng-show="set_of_prefs.children === undefined">No answer given for children question.</span>
+              <span ng-show="set_of_prefs.children === 'true'">I have children.</span>
+              <span ng-show="set_of_prefs.children === 'false'">I do not have children.</span>
             </ion-item>
             <ion-item>
-              {{set_of_prefs.dog}}
+              <span ng-show="set_of_prefs.dog === undefined">No answer given for dog question.</span>
+              <span ng-show="set_of_prefs.dog === 'true'">I have a dog.</span>
+              <span ng-show="set_of_prefs.dog === 'false'">I do not have a dog.</span>
             </ion-item>
             <ion-item>
-              {{set_of_prefs.entrepreneur}}
+              <span ng-show="set_of_prefs.entrepreneur === undefined">No answer given for business question.</span>
+              <span ng-show="set_of_prefs.entrepreneur === 'true'">I plan to start my own business.</span>
+              <span ng-show="set_of_prefs.entrepreneur === 'false'">I do not plan to start my own business.</span>
             </ion-item>
             <ion-item>
-              {{set_of_prefs.population}}
+              <span ng-show="set_of_prefs.population === undefined">No answer given for people question.</span>
+              <span ng-show="set_of_prefs.population === 'urban'">I like places where there are a lot of people<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;and amenities.</span>
+              <span ng-show="set_of_prefs.population === 'rural'">I like lots of open space around me.</span>
+              <span ng-show="set_of_prefs.population === 'suburban'">I'm somewhere between the other two options.'</span>
             </ion-item>
             <ion-item>
-              {{set_of_prefs.sports}}
+              <span ng-show="set_of_prefs.sports === undefined">No answer given for sports question.</span>
+              <span ng-hide="set_of_prefs.sports === undefined">Pro sports I enjoy:</span>
+              <span ng-show="set_of_prefs.sports.baseball"><br>&nbsp;&nbsp;&nbsp;&nbsp;Baseball</span>
+              <span ng-show="set_of_prefs.sports.basketball"><br>&nbsp;&nbsp;&nbsp;&nbsp;Basketball</span>
+              <span ng-show="set_of_prefs.sports.football"><br>&nbsp;&nbsp;&nbsp;&nbsp;Football</span>
+              <span ng-show="set_of_prefs.sports.hockey"><br>&nbsp;&nbsp;&nbsp;&nbsp;Hockey</span>
+              <span ng-show="set_of_prefs.sports.soccer"><br>&nbsp;&nbsp;&nbsp;&nbsp;Soccer</span>
             </ion-item>
             <ion-item>
-              {{set_of_prefs.occupation}}
+              <span ng-show="set_of_prefs.occupation === undefined">No answer given for occupation question.</span>
+              <span ng-hide="set_of_prefs.occupation === undefined">My U.S. Bureau of Labor Statistics occupation<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;code is {{set_of_prefs.occupation}}.</span>
             </ion-item>
           </ion-list>
         </ion-content>
@@ -89,7 +115,7 @@
     <script id="new-prefs.html" type="text/ng-template">
       <div class="modal">
         <ion-header-bar class="bar-secondary">
-          <h1 class="title">Edit preferences</h1>
+          <h1 class="title">Edit Preferences</h1>
           <button class="button button-clear button-positive" ng-click="closeNewPrefs()">Cancel</button>
         </ion-header-bar>
         <ion-content>
@@ -110,11 +136,16 @@
                   <option value=false>No
                 </select>
               </label>
-              <p class="item">Check any of the following that you enjoy:</p>
+              <p class="item">Check the activities that you enjoy:</p>
                 <label><input type="checkbox" ng-model="prefs.activities.running">Running</label><br>
                 <label><input type="checkbox" ng-model="prefs.activities.hiking">Hiking</label><br>
                 <label><input type="checkbox" ng-model="prefs.activities.cycling">Cycling</label><br>
-                <label><input type="checkbox" ng-model="prefs.culture.art">Art</label><br>
+              <label class="item">Do you enjoy art?<br><br>
+                <select ng-model="prefs.art">
+                  <option value=true>Yes
+                  <option value=false>No
+                </select>
+              </label>
               <label class="item">Do you have children?<br><br>
                 <select ng-model="prefs.children">
                   <option value=true>Yes
@@ -135,7 +166,7 @@
               </label>
               <label class="item">Which of the following describes you?<br><br>
                 <select ng-model="prefs.population">
-                  <option value="urban">I like places where there are a lot of people, shopping, dining, and services.
+                  <option value="urban">I like places where there are a lot of people and amenities.
                   <option value="rural">I like lots of open space around me.
                   <option value="suburban">I'm somewhere between the other two options.'
                 </select>
