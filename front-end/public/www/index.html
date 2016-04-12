@@ -15,7 +15,7 @@
     <script src="js/data/areas.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
   </head>
-  <body ng-controller="MainController" ng-cloak ng-init="initApiData()">
+  <body ng-controller="MainController" ng-cloak ng-init="initData()">
     <ion-side-menus>
       <ion-side-menu-content><!-- Center content -->
         <ion-header-bar class="bar-dark">
@@ -31,7 +31,7 @@
           </button>
         </ion-header-bar>
         <ion-content scroll="false">
-          <p>Match cards will go here (and data will not)!</p>
+          <p>Match cards will go here!</p>
           {{displayData}}
         </ion-content>
       </ion-side-menu-content>
@@ -50,16 +50,11 @@
         <ion-content>
           <ion-list>
             <ion-item>
-              {{set_of_prefs.heatcold}}
-            </ion-item>
-            <ion-item>
-              {{set_of_prefs.snow}}
-            </ion-item>
-            <ion-item>
-              {{set_of_prefs.seasons}}
-            </ion-item>
-            <ion-item>
-              {{set_of_prefs.outdoors}}
+              Heat and cold:
+              <span ng-show="set_of_prefs.heatcold==='both'">I tolerate both well.</span>
+              <span ng-show="set_of_prefs.heatcold==='noheat'">I don't like hot weather.'</span>
+              <span ng-show="set_of_prefs.heatcold==='nocold'">I don't like cold weather.'</span>
+              <span ng-show="set_of_prefs.heatcold==='neither'">I don't like either hot or cold weather.'</span>
             </ion-item>
             <ion-item>
               {{set_of_prefs.active}}
@@ -100,44 +95,19 @@
         <ion-content>
           <form ng-submit="createPrefs(prefs)">
             <div class="list">
+              <input type="hidden" ng-model="prefs.saved=true">
               <label class="item">How well do you tolerate heat and cold?<br><br>
                 <select ng-model="prefs.heatcold">
-                  <option value="both">I tolerate both well.
+                  <option value="both" selected="true">I tolerate both well.
                   <option value="noheat">I don't like heat.'
                   <option value="nocold">I don't like cold.'
                   <option value="neither">I don't like either.'
                 </select>
               </label>
-              <label class="item">Do you like snow?<br><br>
-                <select ng-model="prefs.snow">
-                  <option value="true">Yes.
-                  <option value="some">I'm ok with a little bit.'
-                  <option value="false">No.
-                </select>
-              </label>
-              <label class="item">What is your opinion on having four seasons?<br><br>
-                <select ng-model="prefs.seasons">
-                  <option value="four">I like having four distinct seasons.
-                  <option value="skipsummer">I could do without an extreme summer.
-                  <option value="skipwinter">I could do without an extreme winter.
-                  <option value="skipboth">I could do without either extreme.
-                </select>
-              </label>
-              <label class="item">What is your idea of the perfect way to spend a day outdoors?<br><br>
-                <select ng-model="prefs.outdoors">
-                  <option value="beach">At the beach
-                  <option value="hiking">Hiking the mountains
-                  <option value="skiing">Skiing
-                  <option value="camping">Camping
-                  <option value="farm">On the farm
-                  <option value="city">Exploring the city
-                  <option value="none">I don't like to be outdoors.'
-                </select>
-              </label>
               <label class="item">Do you consider yourself to be physically active?<br><br>
                 <select ng-model="prefs.active">
-                  <option value="true">Yes.
-                  <option value="false">No.
+                  <option value="true">Yes
+                  <option value="false">No
                 </select>
               </label>
               <p class="item">Check any of the following that you enjoy:</p>
@@ -145,25 +115,22 @@
                 <label><input type="checkbox" ng-model="prefs.activities.hiking">Hiking</label><br>
                 <label><input type="checkbox" ng-model="prefs.activities.cycling">Cycling</label><br>
                 <label><input type="checkbox" ng-model="prefs.culture.art">Art</label><br>
-                <label><input type="checkbox" ng-model="prefs.culture.dance">Dance</label><br>
-                <label><input type="checkbox" ng-model="prefs.culture.theater">Theater</label><br>
-                <label><input type="checkbox" ng-model="prefs.culture.music">Music</label><br>
               <label class="item">Do you have children?<br><br>
                 <select ng-model="prefs.children">
-                  <option value="true">Yes.
-                  <option value="false">No.
+                  <option value="true">Yes
+                  <option value="false">No
                 </select>
               </label>
               <label class="item">Do you have a dog?<br><br>
                 <select ng-model="prefs.dog">
-                  <option value="true">Yes.
-                  <option value="false">No.
+                  <option value="true">Yes
+                  <option value="false">No
                 </select>
               </label>
               <label class="item">Do you plan to start your own business?<br><br>
                 <select ng-model="prefs.entrepreneur">
-                  <option value="true">Yes.
-                  <option value="false">No.
+                  <option value="true">Yes
+                  <option value="false">No
                 </select>
               </label>
               <label class="item">Which of the following describes you?<br><br>

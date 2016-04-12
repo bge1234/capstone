@@ -1,2 +1,5 @@
-- In main controller, iterate through my JSON object to match data against user prefs. Use separate function for each category, then use one master function to call them all.
-- Make it Tinder style with cards. On swipe right, it goes into a container to be reviewed later. Swipe left, and it's gone.
+- Finish individual matching functions.
+- Put all matching functions in for loop of main matchin function.
+- Clean up prefs display (see heatcold for example).
+- Add Tinder cards. On swipe right, the city goes into a container to be reviewed later. Swipe left, and it's gone.
+- Make prefs form show already-entered prefs like on restaurant edit page.
