@@ -1,3 +1,2 @@
-- Update properties in sampleData that rely on Google API.
 - In main controller, iterate through my JSON object to match data against user prefs. Use separate function for each category, then use one master function to call them all.
 - Make it Tinder style with cards. On swipe right, it goes into a container to be reviewed later. Swipe left, and it's gone.
