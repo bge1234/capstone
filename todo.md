@@ -1,5 +1,11 @@
-- Display matches as human-readable list with reasons.
-- Add Tinder cards. On swipe right, the city goes into a container to be reviewed later. Swipe left, and it's gone.
+Tuesday:
+  - Display matches as human-readable list with reasons.
+  - Add Tinder cards. On swipe right, the city goes into a container to be reviewed later. Swipe left, and it's gone.
+
+Wednesday:
+  - Presentation prep.
+  - Discuss visual aspects with Kinsey.
+  - Look and feel.
 
 Presentation prep:
 1. Who are you?
