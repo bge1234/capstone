@@ -23,6 +23,3 @@ Presentation prep:
   - Make this slide.
 7. Say "Thank you" so the audience knows you're done and can clap for you :)
   - Make a notes sheet with talking points.
-
-Thursday morning:
-  - Change desktop background to all black.
