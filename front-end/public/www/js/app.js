@@ -1,1 +1,1 @@
-var app = angular.module("movematcher", ['ionic'])
+var app = angular.module("moveit", ['ionic'])
