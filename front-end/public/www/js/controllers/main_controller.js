@@ -65,61 +65,53 @@ app.controller("MainController", function($scope, $timeout, $ionicModal, prefsSe
     for (var i = 0; i < cityData.length; i++) {
       if(prefs.heatcold !== undefined) {
         if(matchTemperature(prefs.heatcold, i)) {
-          matchedCities[i]["match_reasons"].push("temperature");
+          matchedCities[i]["match_reasons"].push("Matches your temperature preferences");
         }
         else {
-          matchedCities[i]["fail_reasons"].push("temperature");
-        }
-      }
-      if(prefs.active !== undefined) {
-        if(matchActive(prefs.active, i)) {
-          matchedCities[i]["match_reasons"].push("active");
-        }
-        else {
-          matchedCities[i]["fail_reasons"].push("active");
+          matchedCities[i]["fail_reasons"].push("Does not match your temperature preferences");
         }
       }
       if(prefs.activities !== undefined) {
         if(matchActivities(prefs.activities, i))
-          matchedCities[i]["match_reasons"].push("activities");
+          matchedCities[i]["match_reasons"].push("Trails for walking, running, hiking, cycling");
         else
-          matchedCities[i]["fail_reasons"].push("activities");
+          matchedCities[i]["fail_reasons"].push("No trails for walking, running, hiking, or cycling");
       }
       if(prefs.culture !== undefined) {
         if(matchCulture(prefs.art, i))
-          matchedCities[i]["match_reasons"].push("art");
+          matchedCities[i]["match_reasons"].push("Museums where you can view art");
         else
-          matchedCities[i]["fail_reasons"].push("art");
+          matchedCities[i]["fail_reasons"].push("No museums where you can view art");
       }
       if(prefs.children !== undefined) {
         if(matchChildren(prefs.children, i))
-          matchedCities[i]["match_reasons"].push("children");
+          matchedCities[i]["match_reasons"].push("Universities available for your children to attend");
         else
-          matchedCities[i]["fail_reasons"].push("children");
+          matchedCities[i]["fail_reasons"].push("No universities for your children to attend");
       }
       if(prefs.dog !== undefined) {
         if(matchDog(prefs.dog, i))
-          matchedCities[i]["match_reasons"].push("dog");
+          matchedCities[i]["match_reasons"].push("Parks where you can take your dog");
         else
-          matchedCities[i]["fail_reasons"].push("dog");
+          matchedCities[i]["fail_reasons"].push("No parks where ou can take your dog");
       }
       if(prefs.entrepreneur !== undefined) {
         if(matchEntrepreneur(prefs.entrepreneur, i))
-          matchedCities[i]["match_reasons"].push("entrepreneur");
+          matchedCities[i]["match_reasons"].push("Good supply of university graduates whom you may want to employ at your business");
         else
-          matchedCities[i]["fail_reasons"].push("entrepreneur");
+          matchedCities[i]["fail_reasons"].push("No universities from which to hire graduates");
       }
       if(prefs.population !== undefined) {
         if(matchPopulation(prefs.population, i))
-          matchedCities[i]["match_reasons"].push("population");
+          matchedCities[i]["match_reasons"].push("Population maches your preferences");
         else
-          matchedCities[i]["fail_reasons"].push("population");
+          matchedCities[i]["fail_reasons"].push("Population does not match your preferences");
       }
       if(prefs.sports !== undefined) {
         if(matchSports(prefs.sports, i))
-          matchedCities[i]["match_reasons"].push("sports");
+          matchedCities[i]["match_reasons"].push("Teams from your preferred pro sports");
         else
-          matchedCities[i]["fail_reasons"].push("sports");
+          matchedCities[i]["fail_reasons"].push("No teams from your preferred pro sports");
       }
     }
 
@@ -132,15 +124,6 @@ app.controller("MainController", function($scope, $timeout, $ionicModal, prefsSe
     if((heatcold === "noheat" || heatcold === "neither") && (cityData[i]["data"]["temperature"]["average_high"] > 70 || cityData[i]["data"]["temperature"]["record_high"] > 90))
       isMatch = false;
     else if((heatcold === "nocold" || heatcold === "neither") && (cityData[i]["data"]["temperature"]["average_high"] < 40 || cityData[i]["data"]["temperature"]["record_low"] < 20))
-      isMatch = false;
-
-    return isMatch;
-  }
-
-  function matchActive(active, i) {
-    var isMatch = true;
-
-    if(active === "true" && cityData[i]["data"]["number_of_trails"] === 0)
       isMatch = false;
 
     return isMatch;
@@ -255,20 +238,20 @@ app.controller("MainController", function($scope, $timeout, $ionicModal, prefsSe
     }
 
     if(cityData[i]["data"]["cpi"] > 75)
-      highlow = "a high";
+      highlow = "High";
     else if(cityData[i]["data"]["cpi"] < 45)
-      highlow = "a low";
+      highlow = "Low";
     else
-      highlow = "an average";
+      highlow = "Average";
 
     if(cityData[i]["data"]["sample_salary"] > 90000)
-      comfortLevel = ", you should be more than comfortable there financially.";
+      comfortLevel = ", you should be more than comfortable financially.";
     else if(cityData[i]["data"]["sample_salary"] < 30000)
-      comfortLevel = ", you might struggle there financially.";
+      comfortLevel = ", you may struggle financially.";
     else
-      comfortLevel = ", you should be relatively comfortable there financially.";
+      comfortLevel = ", you should be relatively comfortable financially.";
 
-    return cityData[i]["city"] + " has " + highlow + " cost of living. At an average salary of " + salary + comfortLevel;
+    return highlow + " cost of living. At an average salary of " + salary + comfortLevel;
   }
 
   // The remainder below should be uncommented in order to use live data.

@@ -30,9 +30,19 @@
             <i class="icon ion-compose"></i>
           </button>
         </ion-header-bar>
-        <ion-content scroll="false">
-          <p>Match cards will go here!</p>
-          {{displayData}}
+        <!-- <ion-content scroll="false"> -->
+        <ion-content>
+          <h4>You matched with:</h4>
+          <div ng-repeat="city in displayData">
+            <p>{{city.city}}:</p>
+            <ul ng-repeat="match_reason in city.match_reasons">
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;{{match_reason}}</li>
+            </ul>
+            <ul ng-repeat="fail_reason in city.fail_reasons">
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;{{fail_reason}}</li>
+            </ul>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;{{city.financial}}</p>
+          </div>
         </ion-content>
       </ion-side-menu-content>
       <ion-side-menu side="left">
@@ -57,13 +67,9 @@
               <span ng-show="set_of_prefs.heatcold === 'neither'">I don't like either hot or cold weather.'</span>
             </ion-item>
             <ion-item>
-              <span ng-show="set_of_prefs.active === undefined">No answer given for physical activity question.</span>
-              <span ng-show="set_of_prefs.active === 'true'">I am physically active.</span>
-              <span ng-show="set_of_prefs.active === 'false'">I am not physically active.</span>
-            </ion-item>
-            <ion-item>
               <span ng-show="set_of_prefs.activities === undefined">No answer given for activities question.</span>
               <span ng-hide="set_of_prefs.activities === undefined">Activities I enjoy:</span>
+              <span ng-show="set_of_prefs.activities.walking"><br>&nbsp;&nbsp;&nbsp;&nbsp;Walking</span>
               <span ng-show="set_of_prefs.activities.running"><br>&nbsp;&nbsp;&nbsp;&nbsp;Running</span>
               <span ng-show="set_of_prefs.activities.hiking"><br>&nbsp;&nbsp;&nbsp;&nbsp;Hiking</span>
               <span ng-show="set_of_prefs.activities.cycling"><br>&nbsp;&nbsp;&nbsp;&nbsp;Cycling</span>
@@ -129,13 +135,8 @@
                   <option value="neither">I don't like either.'
                 </select>
               </label>
-              <label class="item">Do you consider yourself to be physically active?<br><br>
-                <select ng-model="prefs.active">
-                  <option value=true>Yes
-                  <option value=false>No
-                </select>
-              </label>
               <p class="item">Check the activities that you enjoy:</p>
+                <label><input type="checkbox" ng-model="prefs.activities.walking">Walking</label><br>
                 <label><input type="checkbox" ng-model="prefs.activities.running">Running</label><br>
                 <label><input type="checkbox" ng-model="prefs.activities.hiking">Hiking</label><br>
                 <label><input type="checkbox" ng-model="prefs.activities.cycling">Cycling</label><br>

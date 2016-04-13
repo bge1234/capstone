@@ -1,6 +1,7 @@
 Tuesday:
-  - Display matches as human-readable list with reasons.
-  - Add Tinder cards. On swipe right, the city goes into a container to be reviewed later. Swipe left, and it's gone.
+  - Only show cities with a certain ratio of match reasons to fail reasons.
+  - Display matches on Tinder cards instead of list.
+  - Implement swiping: On right swipe, the city goes into a container to be reviewed later. On left swipe, it's gone.
 
 Wednesday:
   - Presentation prep.
