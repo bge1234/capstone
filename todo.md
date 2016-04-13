@@ -1,6 +1,7 @@
 Tuesday:
-  - Figure out how to actually do a right swipe without sliding the screen.
-  - Implement that on right swipe, the city goes into a container to be reviewed later.
+  - Add image URLs to sampleData.
+  - Add image URLs to savedMatches.
+  - Style Saved Matches page.
 
 Wednesday:
   - Presentation prep.
@@ -18,6 +19,8 @@ Presentation prep:
   - Make it look better.
 5. What challenges did you run into and how did you overcome them?
   - Discuss which specific APIs I used as well as specifically what the challenges with them were. Call out the BLS one.
+  - Tinder card library makes it not work online or in iOS emulator.
+  - Tinder card library only registers a swipe left or right if it's hard. A gentle swipe won't register a direction, but the card will still be gone.
   - Brainstorm some more challenges.
 6. Finish with a slide with your name, github, linkedIn, say your name again
   - Make this slide.
@@ -26,4 +29,3 @@ Presentation prep:
 
 Thursday morning:
   - Change desktop background to all black.
-  - Delete app from simulator in order to clear data.

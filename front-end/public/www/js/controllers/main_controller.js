@@ -127,13 +127,19 @@ app.controller("MainController", function($scope, $timeout, $ionicModal, prefsSe
     matchedCities = newArray;
 
     $scope.cards = [];
+    $scope.savedMatches = [];
+
     for(var i = matchedCities.length - 1; i >= 0; i--) {
       $scope.cards.push(angular.extend({}, matchedCities[i]));
     }
   }
 
   $scope.cardDestroyed = function(index) {
-      $scope.cards.splice(index, 1);
+    $scope.cards.splice(index, 1);
+  }
+
+  $scope.cardSwipedLeft = function(index){
+    $scope.savedMatches.push($scope.cards[index]);
   }
 
   function matchTemperature(heatcold, i) {
