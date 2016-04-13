@@ -37,7 +37,7 @@
         </ion-header-bar>
         <ion-content scroll="false">
           <ion-pane>
-              <p>Swipe left hard to save a match</p>
+              <p>Swipe right to delete a match or hard left to save it.</p>
               <td-cards>
                   <td-card style="background: black" id="td-card" ng-repeat="card in cards" on-destroy="cardDestroyed($index)"
                   on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)"
@@ -77,26 +77,30 @@
       <ion-side-menu side="left">
         <ion-header-bar class="bar-dark">
           <h1 class="title">Saved Matches</h1>
-          <div style="background: black" ng-repeat="city in savedMatches">
-            <p style="color: white">
-              <strong>{{city.city}}:</strong>
-            </p>
-            <img src="{{city.image_url}}" height="100" width="100">
-            <ul ng-repeat="match_reason in city.match_reasons">
-              <li style="color: green">&nbsp;&nbsp;&nbsp;&nbsp;
-                {{match_reason}}
-              </li>
-            </ul>
-            <ul ng-repeat="fail_reason in city.fail_reasons">
-              <li style="color: red">&nbsp;&nbsp;&nbsp;&nbsp;
-                {{fail_reason}}
-              </li>
-            </ul>
-            <p style="color: yellow">&nbsp;&nbsp;&nbsp;&nbsp;
-              {{city.financial}}
-            </p>
-          </div>
         </ion-header-bar>
+        <ion-content>
+          <div style="background: black">
+            <div style="margin-left: 20px" ng-repeat="city in savedMatches">
+              <p style="color: white">
+                <strong>{{city.city}}:</strong>
+              </p>
+              <img class="savedmatchimage" src="{{city.image_url}}" height="100" width="200">
+              <ul ng-repeat="match_reason in city.match_reasons">
+                <li style="color: green">&nbsp;&nbsp;&nbsp;&nbsp;
+                  {{match_reason}}
+                </li>
+              </ul>
+              <ul ng-repeat="fail_reason in city.fail_reasons">
+                <li style="color: red">&nbsp;&nbsp;&nbsp;&nbsp;
+                  {{fail_reason}}
+                </li>
+              </ul>
+              <p style="color: yellow">&nbsp;&nbsp;&nbsp;&nbsp;
+                {{city.financial}}
+              </p><br>
+            </div>
+          </div>
+        </ion-content>
       </ion-side-menu>
     </ion-side-menus>
     <script id="view-prefs.html" type="text/ng-template">
