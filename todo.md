@@ -1,12 +1,11 @@
 Tuesday:
-  - Add image URLs to sampleData.
-  - Add image URLs to savedMatches.
   - Style Saved Matches page.
 
 Wednesday:
   - Presentation prep.
   - Discuss visual aspects with Kinsey.
   - Look and feel.
+  - Build APK file for use on my phone?
 
 Presentation prep:
 1. Who are you?
@@ -14,7 +13,7 @@ Presentation prep:
 2. What problem did your app solve?
   - Talk more about what led me to create this app.
 3. What technologies did you use?
-  - Sell myself more on learning Ionic.
+  - Sell myself more on having learned Ionic.
 4. Show the app
   - Make it look better.
 5. What challenges did you run into and how did you overcome them?

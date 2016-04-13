@@ -1,6 +1,6 @@
 var sampleData = [{
 	"city": "New York City",
-	"image_url": "http://placehold.it/100x100",
+	"image_url": "http://www.nationalgeographic.com/new-york-city-skyline-tallest-midtown-manhattan/assets/img/articleImg/01nyskyline1536.jpg",
 	"data": {
 		"location": {
 			"state": "New+York",
@@ -28,6 +28,7 @@ var sampleData = [{
 	}
 }, {
 	"city": "Los Angeles",
+	"image_url": "http://vignette4.wikia.nocookie.net/olympians/images/b/b1/LA.jpeg/revision/latest?cb=20150303212850",
 	"data": {
 		"location": {
 			"state": "California",
@@ -55,6 +56,7 @@ var sampleData = [{
 	}
 }, {
 	"city": "Chicago",
+	"image_url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Chicago_from_North_Avenue_Beach_June_2015_panorama_2.jpg",
 	"data": {
 		"location": {
 			"state": "Illinois",
@@ -82,6 +84,7 @@ var sampleData = [{
 	}
 }, {
 	"city": "Houston",
+	"image_url": "http://www.divorcelawyerhouston.pro/wp-content/uploads/2013/12/Houston.png",
 	"data": {
 		"location": {
 			"state": "Texas",
@@ -109,6 +112,7 @@ var sampleData = [{
 	}
 }, {
 	"city": "Philadelphia",
+	"image_url": "http://photos.visitphilly.com/university-city-philadelphia-skyline-day-1400vp.jpg",
 	"data": {
 		"location": {
 			"state": "Pennsylvania",
@@ -136,6 +140,7 @@ var sampleData = [{
 	}
 }, {
 	"city": "Phoenix",
+	"image_url": "http://www.wildnatureimages.com/images%203/Phoenix-skyline..jpg",
 	"data": {
 		"location": {
 			"state": "Arizona",
@@ -163,6 +168,7 @@ var sampleData = [{
 	}
 }, {
 	"city": "San Antonio",
+	"image_url": "http://westwoodps.com/sites/default/files/styles/slideshow_slide_small/public/SanAntonioSkyline.jpg?itok=4xsKlLlS",
 	"data": {
 		"location": {
 			"state": "Texas",
@@ -190,6 +196,7 @@ var sampleData = [{
 	}
 }, {
 	"city": "San Diego",
+	"image_url": "http://www.paradisepoint.com/images/masthead/about-san-diego.jpg",
 	"data": {
 		"location": {
 			"state": "California",
@@ -217,6 +224,7 @@ var sampleData = [{
 	}
 }, {
 	"city": "Dallas",
+	"image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Xvixionx_29_April_2006_Dallas_Skyline.jpg",
 	"data": {
 		"location": {
 			"state": "Texas",
@@ -244,6 +252,7 @@ var sampleData = [{
 	}
 }, {
 	"city": "San Jose",
+	"image_url": "http://doubletree3.hilton.com/resources/media/dt/JOSE-DT/en_US/img/shared/full_page_image_gallery/main/dh_siliconvalley_2_677x380_FitToBoxSmallDimension_Center.jpg",
 	"data": {
 		"location": {
 			"state": "California",
@@ -271,6 +280,7 @@ var sampleData = [{
 	}
 }, {
 	"city": "Denver",
+	"image_url": "http://www.ucdenver.edu/academics/colleges/Engineering/Programs/bioengineering/Laboratories/BenningerLab/PublishingImages/Denver_skyline_589CC_rt.jpg",
 	"data": {
 		"location": {
 			"state": "Colorado",

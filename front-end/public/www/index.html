@@ -78,7 +78,10 @@
         <ion-header-bar class="bar-dark">
           <h1 class="title">Saved Matches</h1>
           <div style="background: black" ng-repeat="city in savedMatches">
-            <p style="color: white"><strong>{{city.city}}:</strong></p>
+            <p style="color: white">
+              <strong>{{city.city}}:</strong>
+            </p>
+            <img src="{{city.image_url}}">
             <ul ng-repeat="match_reason in city.match_reasons">
               <li style="color: green">&nbsp;&nbsp;&nbsp;&nbsp;
                 {{match_reason}}
