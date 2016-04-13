@@ -5,7 +5,12 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <link rel="stylesheet" href="http://code.ionicframework.com/contrib/ionic-contrib-tinder-cards/ionic.tdcards.css">
+    <link href="//code.ionicframework.com/1.0.0-beta.14/css/ionic.css" rel="stylesheet">
+    <script src="http://code.ionicframework.com/collide/0.0.4/collide.js"></script>
+    <script src="//code.ionicframework.com/1.0.0-beta.14/js/ionic.bundle.js"></script>
+    <script src="http://code.ionicframework.com/contrib/ionic-contrib-tinder-cards/ionic.tdcards.js"></script>
+    <!-- <script src="lib/ionic/js/ionic.bundle.js"></script> -->
     <script src="cordova.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers/main_controller.js"></script>
@@ -30,25 +35,42 @@
             <i class="icon ion-compose"></i>
           </button>
         </ion-header-bar>
-        <!-- <ion-content scroll="false"> -->
-        <ion-content>
-          <h4>You matched with:</h4>
-          <div style="background: black" ng-repeat="city in displayData">
-            <p style="color: white"><strong>{{city.city}}:</strong></p>
-            <ul ng-repeat="match_reason in city.match_reasons">
-              <li style="color: green">&nbsp;&nbsp;&nbsp;&nbsp;
-                {{match_reason}}
-              </li>
-            </ul>
-            <ul ng-repeat="fail_reason in city.fail_reasons">
-              <li style="color: red">&nbsp;&nbsp;&nbsp;&nbsp;
-                {{fail_reason}}
-              </li>
-            </ul>
-            <p style="color: yellow">&nbsp;&nbsp;&nbsp;&nbsp;
-              {{city.financial}}
-            </p>
-          </div>
+        <ion-content scroll="false">
+          <ion-pane>
+              <td-cards>
+                  <td-card style="background: black" id="td-card" ng-repeat="card in cards" on-destroy="cardDestroyed($index)"
+                  on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)"
+                  on-partial-swipe="cardPartialSwipe(amt)">
+                      <div style="color: white" class="title">
+                          <strong>{{card.city}}</strong>
+                      </div>
+                      <div class="image">
+                        <div class="no-text overlayBox">
+                          <div class="noBox boxed">Trash</div>
+                        </div>
+                        <div class="yes-text overlayBox">
+                          <div class="yesBox boxed" id="centerMe">Save</div>
+                        </div>
+                        <img src="{{card.image_url}}">
+                      </div>
+                      <div class="content">
+                        <ul ng-repeat="match_reason in card.match_reasons">
+                          <li style="color: green">&nbsp;&nbsp;&nbsp;&nbsp;
+                            {{match_reason}}
+                          </li>
+                        </ul>
+                        <ul ng-repeat="fail_reason in card.fail_reasons">
+                          <li style="color: red">&nbsp;&nbsp;&nbsp;&nbsp;
+                            {{fail_reason}}
+                          </li>
+                        </ul>
+                        <p style="color: yellow">&nbsp;&nbsp;&nbsp;&nbsp;
+                          {{card.financial}}
+                        </p>
+                      </div>
+                  </td-card>
+              </td-cards>
+          </ion-pane>
         </ion-content>
       </ion-side-menu-content>
       <ion-side-menu side="left">

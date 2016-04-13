@@ -1,5 +1,6 @@
 var sampleData = [{
 	"city": "New York City",
+	"image_url": "http://placehold.it/100x100",
 	"data": {
 		"location": {
 			"state": "New+York",

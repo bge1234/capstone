@@ -1,4 +1,4 @@
-app.controller("MainController", function($scope, $timeout, $ionicModal, prefsService, apiService, $ionicSideMenuDelegate) {
+app.controller("MainController", function($scope, $timeout, $ionicModal, prefsService, apiService, $ionicSideMenuDelegate, TDCardDelegate) {
 
   var cityData = [];
 
@@ -56,6 +56,7 @@ app.controller("MainController", function($scope, $timeout, $ionicModal, prefsSe
     for (var i = 0; i < cityData.length; i++) {
       matchedCities.push({
         city: cityData[i]["city"],
+        image_url: cityData[i]["image_url"],
         match_reasons: [],
         fail_reasons: [],
         financial: calculateFinance(prefs.occupation, i)
@@ -125,7 +126,14 @@ app.controller("MainController", function($scope, $timeout, $ionicModal, prefsSe
 
     matchedCities = newArray;
 
-    $scope.displayData = matchedCities;
+    $scope.cards = [];
+    for(var i = matchedCities.length - 1; i >= 0; i--) {
+      $scope.cards.push(angular.extend({}, matchedCities[i]));
+    }
+  }
+
+  $scope.cardDestroyed = function(index) {
+      $scope.cards.splice(index, 1);
   }
 
   function matchTemperature(heatcold, i) {

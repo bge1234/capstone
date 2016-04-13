@@ -1,6 +1,6 @@
 Tuesday:
-  - Display matches on Tinder cards instead of list.
-  - Implement swiping: On right swipe, the city goes into a container to be reviewed later. On left swipe, it's gone.
+  - Figure out how to actually do a right swipe without sliding the screen.
+  - Implement that on right swipe, the city goes into a container to be reviewed later.
 
 Wednesday:
   - Presentation prep.
