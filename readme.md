@@ -1,4 +1,4 @@
-##Move It capstone project
+##MoveIt capstone project
 
 Front end deployed to: https://moveit-benebel.firebaseapp.com
 - To run locally, go to front-end/public and run "ionic serve".
