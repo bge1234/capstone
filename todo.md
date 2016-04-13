@@ -1,3 +1,5 @@
+It's the last day before Hiring Day!
+
 Wednesday:
   - Presentation prep.
   - Style Saved Matches page.
