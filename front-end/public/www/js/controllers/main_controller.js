@@ -115,6 +115,16 @@ app.controller("MainController", function($scope, $timeout, $ionicModal, prefsSe
       }
     }
 
+    // Remove cities that have more fails than matches.
+    var newArray = [];
+
+    for (var i = 0; i < matchedCities.length; i++) {
+      if(matchedCities[i]["match_reasons"] > matchedCities[i]["fail_reasons"])
+        newArray.push(matchedCities[i]);
+    }
+
+    matchedCities = newArray;
+
     $scope.displayData = matchedCities;
   }
 

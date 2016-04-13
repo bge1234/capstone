@@ -33,15 +33,21 @@
         <!-- <ion-content scroll="false"> -->
         <ion-content>
           <h4>You matched with:</h4>
-          <div ng-repeat="city in displayData">
-            <p>{{city.city}}:</p>
+          <div style="background: black" ng-repeat="city in displayData">
+            <p style="color: white"><strong>{{city.city}}:</strong></p>
             <ul ng-repeat="match_reason in city.match_reasons">
-              <li>&nbsp;&nbsp;&nbsp;&nbsp;{{match_reason}}</li>
+              <li style="color: green">&nbsp;&nbsp;&nbsp;&nbsp;
+                {{match_reason}}
+              </li>
             </ul>
             <ul ng-repeat="fail_reason in city.fail_reasons">
-              <li>&nbsp;&nbsp;&nbsp;&nbsp;{{fail_reason}}</li>
+              <li style="color: red">&nbsp;&nbsp;&nbsp;&nbsp;
+                {{fail_reason}}
+              </li>
             </ul>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;{{city.financial}}</p>
+            <p style="color: yellow">&nbsp;&nbsp;&nbsp;&nbsp;
+              {{city.financial}}
+            </p>
           </div>
         </ion-content>
       </ion-side-menu-content>

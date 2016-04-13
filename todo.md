@@ -1,5 +1,4 @@
 Tuesday:
-  - Only show cities with a certain ratio of match reasons to fail reasons.
   - Display matches on Tinder cards instead of list.
   - Implement swiping: On right swipe, the city goes into a container to be reviewed later. On left swipe, it's gone.
 
@@ -24,3 +23,7 @@ Presentation prep:
   - Make this slide.
 7. Say "Thank you" so the audience knows you're done and can clap for you :)
   - Make a notes sheet with talking points.
+
+Thursday morning:
+  - Change desktop background to all black.
+  - Delete app from simulator in order to clear data.
